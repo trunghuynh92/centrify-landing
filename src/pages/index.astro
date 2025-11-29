@@ -399,6 +399,97 @@ const features = [
         .nav-links {
           display: none;
         }
+
+        .mobile-menu-btn {
+          display: flex;
+        }
+
+        .desktop-cta {
+          display: none;
+        }
+      }
+
+      /* Mobile Menu */
+      .mobile-menu-btn {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 44px;
+        height: 44px;
+        background: transparent;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        cursor: pointer;
+        gap: 5px;
+        padding: 10px;
+      }
+
+      .mobile-menu-btn span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: var(--text);
+        border-radius: 2px;
+        transition: all 0.3s;
+      }
+
+      .mobile-menu-btn.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-menu-btn.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 73px;
+        left: 0;
+        right: 0;
+        background: rgba(15, 23, 42, 0.98);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        padding: 24px;
+        z-index: 99;
+      }
+
+      .mobile-menu.active {
+        display: block;
+      }
+
+      .mobile-menu ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .mobile-menu a {
+        display: block;
+        padding: 12px 16px;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 8px;
+        transition: all 0.2s;
+      }
+
+      .mobile-menu a:hover {
+        background: var(--bg-card);
+        color: var(--text);
+      }
+
+      .mobile-menu .btn {
+        width: 100%;
+        justify-content: center;
+        margin-top: 16px;
       }
 
       @media (max-width: 640px) {
@@ -442,9 +533,43 @@ const features = [
           <li><a href="#features">Features</a></li>
           <li><a href="/blog">Blog</a></li>
         </ul>
-        <a href="https://app.centrify.io" class="btn btn-primary">Open App</a>
+        <a href="https://app.centrify.io" class="btn btn-primary desktop-cta">Open App</a>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </nav>
+      <div class="mobile-menu">
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+        <a href="https://app.centrify.io" class="btn btn-primary">Open App</a>
+      </div>
     </header>
+
+    <script>
+      const menuBtn = document.querySelector('.mobile-menu-btn');
+      const mobileMenu = document.querySelector('.mobile-menu');
+
+      menuBtn?.addEventListener('click', () => {
+        menuBtn.classList.toggle('active');
+        mobileMenu?.classList.toggle('active');
+        menuBtn.setAttribute('aria-expanded',
+          menuBtn.classList.contains('active').toString()
+        );
+      });
+
+      // Close menu when clicking a link
+      mobileMenu?.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menuBtn?.classList.remove('active');
+          mobileMenu.classList.remove('active');
+          menuBtn?.setAttribute('aria-expanded', 'false');
+        });
+      });
+    </script>
 
     <main>
       <section class="hero">
