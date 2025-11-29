@@ -58,6 +58,8 @@ const features = [
         --cyan: #22D3EE;
         --navy: #0F172A;
         --navy-light: #1E293B;
+        --purple: #8B5CF6;
+        --pink: #EC4899;
 
         /* UI Colors */
         --bg-dark: #0F172A;
@@ -65,6 +67,11 @@ const features = [
         --text: #F8FAFC;
         --text-muted: #94A3B8;
         --border: #334155;
+
+        /* Glassmorphism */
+        --glass-bg: rgba(255, 255, 255, 0.1);
+        --glass-border: rgba(255, 255, 255, 0.2);
+        --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
       }
 
       html {
@@ -76,12 +83,31 @@ const features = [
         background: var(--bg-dark);
         color: var(--text);
         line-height: 1.6;
+        overflow-x: hidden;
       }
 
       .container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 24px;
+      }
+
+      /* Glassmorphism Card */
+      .glass {
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        box-shadow: var(--glass-shadow);
+      }
+
+      .glass-subtle {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
       }
 
       /* Header */
@@ -91,18 +117,21 @@ const features = [
         left: 0;
         right: 0;
         z-index: 100;
-        background: rgba(15, 23, 42, 0.9);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid var(--border);
+        padding: 16px 24px;
       }
 
       nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 12px 24px;
         max-width: 1200px;
         margin: 0 auto;
+        padding: 12px 24px;
+        background: rgba(15, 23, 42, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
       }
 
       .logo {
@@ -112,7 +141,7 @@ const features = [
       }
 
       .logo img {
-        height: 48px;
+        height: 44px;
         width: auto;
       }
 
@@ -139,11 +168,11 @@ const features = [
         align-items: center;
         gap: 8px;
         padding: 12px 28px;
-        border-radius: 8px;
+        border-radius: 12px;
         font-weight: 600;
         font-size: 15px;
         text-decoration: none;
-        transition: all 0.2s;
+        transition: all 0.3s;
         cursor: pointer;
         border: none;
         font-family: 'League Spartan', sans-serif;
@@ -152,23 +181,24 @@ const features = [
       .btn-primary {
         background: linear-gradient(135deg, var(--primary) 0%, var(--teal) 100%);
         color: white;
-        box-shadow: 0 4px 14px rgba(14, 165, 233, 0.3);
+        box-shadow: 0 4px 20px rgba(14, 165, 233, 0.4);
       }
 
       .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(14, 165, 233, 0.5);
       }
 
-      .btn-secondary {
-        background: transparent;
+      .btn-glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
         color: var(--text);
-        border: 1px solid var(--border);
+        border: 1px solid rgba(255, 255, 255, 0.2);
       }
 
-      .btn-secondary:hover {
-        background: var(--bg-card);
-        border-color: var(--primary);
+      .btn-glass:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.3);
       }
 
       /* Hero */
@@ -176,11 +206,64 @@ const features = [
         min-height: 100vh;
         display: flex;
         align-items: center;
-        padding-top: 80px;
-        background:
-          radial-gradient(ellipse at top right, rgba(14, 165, 233, 0.15) 0%, transparent 50%),
-          radial-gradient(ellipse at bottom left, rgba(13, 148, 136, 0.1) 0%, transparent 50%),
-          var(--bg-dark);
+        padding-top: 100px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Vibrant Background Blobs */
+      .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.6;
+        animation: blobFloat 20s ease-in-out infinite;
+      }
+
+      .blob-1 {
+        width: 600px;
+        height: 600px;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--cyan) 100%);
+        top: -200px;
+        right: -100px;
+        animation-delay: 0s;
+      }
+
+      .blob-2 {
+        width: 500px;
+        height: 500px;
+        background: linear-gradient(135deg, var(--teal) 0%, var(--primary) 100%);
+        bottom: -150px;
+        left: -100px;
+        animation-delay: -5s;
+      }
+
+      .blob-3 {
+        width: 400px;
+        height: 400px;
+        background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation-delay: -10s;
+        opacity: 0.4;
+      }
+
+      .blob-4 {
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(135deg, var(--cyan) 0%, var(--teal) 100%);
+        top: 20%;
+        left: 10%;
+        animation-delay: -15s;
+        opacity: 0.5;
+      }
+
+      @keyframes blobFloat {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        25% { transform: translate(30px, -30px) scale(1.05); }
+        50% { transform: translate(-20px, 20px) scale(0.95); }
+        75% { transform: translate(20px, 30px) scale(1.02); }
       }
 
       .hero-content {
@@ -188,6 +271,8 @@ const features = [
         grid-template-columns: 1fr 1fr;
         gap: 64px;
         align-items: center;
+        position: relative;
+        z-index: 1;
       }
 
       .hero-text h1 {
@@ -199,7 +284,7 @@ const features = [
       }
 
       .hero-text h1 .gradient {
-        background: linear-gradient(135deg, var(--primary) 0%, var(--cyan) 50%, var(--teal) 100%);
+        background: linear-gradient(135deg, var(--cyan) 0%, var(--primary) 50%, var(--teal) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -226,21 +311,110 @@ const features = [
         align-items: center;
       }
 
-      .hero-logo {
-        width: 400px;
-        height: auto;
-        filter: drop-shadow(0 25px 50px rgba(14, 165, 233, 0.3));
-        animation: float 6s ease-in-out infinite;
+      /* Glassmorphism Dashboard Card */
+      .dashboard-card {
+        width: 100%;
+        max-width: 450px;
+        padding: 28px;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 24px;
+        box-shadow:
+          0 8px 32px rgba(0, 0, 0, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
       }
 
-      @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-20px); }
+      .dashboard-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 24px;
+      }
+
+      .dashboard-label {
+        font-size: 14px;
+        color: var(--text-muted);
+        margin-bottom: 4px;
+      }
+
+      .dashboard-amount {
+        font-size: 42px;
+        font-weight: 700;
+        background: linear-gradient(135deg, var(--text) 0%, var(--cyan) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .dashboard-badge {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 6px 12px;
+        background: rgba(34, 197, 94, 0.2);
+        border-radius: 100px;
+        color: #22C55E;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .dashboard-chart {
+        height: 120px;
+        background: linear-gradient(180deg, rgba(14, 165, 233, 0.3) 0%, transparent 100%);
+        border-radius: 12px;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 20px;
+      }
+
+      .dashboard-chart::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--cyan), var(--teal));
+      }
+
+      .dashboard-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .stat-card {
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .stat-label {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-bottom: 4px;
+      }
+
+      .stat-value {
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      .stat-value.income {
+        color: #22C55E;
+      }
+
+      .stat-value.expense {
+        color: #F43F5E;
       }
 
       /* Features */
       .features {
         padding: 120px 0;
+        position: relative;
       }
 
       .section-header {
@@ -250,13 +424,14 @@ const features = [
 
       .section-tag {
         display: inline-block;
-        padding: 8px 20px;
-        background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(13, 148, 136, 0.1) 100%);
+        padding: 10px 24px;
+        background: rgba(14, 165, 233, 0.1);
+        backdrop-filter: blur(10px);
         border: 1px solid rgba(14, 165, 233, 0.3);
         border-radius: 100px;
         font-size: 13px;
         font-weight: 600;
-        color: var(--primary);
+        color: var(--cyan);
         text-transform: uppercase;
         letter-spacing: 1.5px;
         margin-bottom: 20px;
@@ -284,34 +459,50 @@ const features = [
       }
 
       .feature-card {
-        background: linear-gradient(135deg, var(--bg-card) 0%, rgba(30, 41, 59, 0.5) 100%);
-        border: 1px solid var(--border);
-        border-radius: 16px;
         padding: 32px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
         transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
       }
 
       .feature-card:hover {
-        border-color: var(--primary);
-        transform: translateY(-4px);
-        box-shadow: 0 20px 40px rgba(14, 165, 233, 0.1);
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(14, 165, 233, 0.3);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15);
       }
 
       .feature-icon {
-        width: 52px;
-        height: 52px;
-        background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(13, 148, 136, 0.15) 100%);
-        border-radius: 12px;
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(13, 148, 136, 0.2) 100%);
+        border-radius: 16px;
         display: flex;
         align-items: center;
         justify-content: center;
         margin-bottom: 20px;
+        border: 1px solid rgba(14, 165, 233, 0.2);
       }
 
       .feature-icon svg {
-        width: 26px;
-        height: 26px;
-        stroke: var(--primary);
+        width: 28px;
+        height: 28px;
+        stroke: var(--cyan);
       }
 
       .feature-card h3 {
@@ -331,9 +522,28 @@ const features = [
       .cta {
         padding: 120px 0;
         text-align: center;
-        background:
-          radial-gradient(ellipse at center, rgba(14, 165, 233, 0.1) 0%, transparent 60%),
-          var(--bg-dark);
+        position: relative;
+      }
+
+      .cta-card {
+        padding: 80px 60px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 32px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
       }
 
       .cta h2 {
@@ -353,7 +563,7 @@ const features = [
       /* Footer */
       footer {
         padding: 48px 0;
-        border-top: 1px solid var(--border);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
       }
 
       .footer-content {
@@ -399,6 +609,10 @@ const features = [
         .nav-links {
           display: none;
         }
+
+        .blob {
+          opacity: 0.4;
+        }
       }
 
       @media (max-width: 640px) {
@@ -429,10 +643,20 @@ const features = [
           flex-direction: column;
           gap: 16px;
         }
+
+        .cta-card {
+          padding: 48px 24px;
+        }
       }
     </style>
   </head>
   <body>
+    <!-- Background Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+
     <header>
       <nav>
         <a href="/" class="logo">
@@ -461,11 +685,35 @@ const features = [
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
                 </a>
-                <a href="#features" class="btn btn-secondary">Learn More</a>
+                <a href="#features" class="btn btn-glass">Learn More</a>
               </div>
             </div>
             <div class="hero-visual">
-              <img src="/logo-icon.png" alt="Centrify Logo" class="hero-logo" />
+              <div class="dashboard-card">
+                <div class="dashboard-header">
+                  <div>
+                    <div class="dashboard-label">Total Balance</div>
+                    <div class="dashboard-amount">$124,563</div>
+                  </div>
+                  <div class="dashboard-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M7 17l9.2-9.2M17 17V7H7"/>
+                    </svg>
+                    +12.5%
+                  </div>
+                </div>
+                <div class="dashboard-chart"></div>
+                <div class="dashboard-stats">
+                  <div class="stat-card">
+                    <div class="stat-label">Income</div>
+                    <div class="stat-value income">+$8,420</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-label">Expenses</div>
+                    <div class="stat-value expense">-$3,150</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -496,14 +744,16 @@ const features = [
 
       <section class="cta">
         <div class="container">
-          <h2>Ready to take control of your finances?</h2>
-          <p>Join thousands of businesses managing their money smarter with Centrify.</p>
-          <a href="https://app.centrify.io" class="btn btn-primary">
-            Start Free Trial
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
+          <div class="cta-card">
+            <h2>Ready to take control of your finances?</h2>
+            <p>Join thousands of businesses managing their money smarter with Centrify.</p>
+            <a href="https://app.centrify.io" class="btn btn-primary">
+              Start Free Trial
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
         </div>
       </section>
     </main>
