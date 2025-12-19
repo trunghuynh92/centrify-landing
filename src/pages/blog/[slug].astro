@@ -1,21 +1,21 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getPostBySlug } from '../../lib/blog';
+import { marked } from 'marked';
 import SEO from '../../components/SEO.astro';
 
-export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => !data.draft);
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: post,
-  }));
+export const prerender = false;
+
+const { slug } = Astro.params;
+const post = await getPostBySlug(slug || '');
+
+if (!post) {
+  return Astro.redirect('/blog');
 }
 
-type Props = CollectionEntry<'blog'>;
+const htmlContent = await marked(post.content);
 
-const post = Astro.props;
-const { Content } = await post.render();
-
-const formatDate = (date: Date) => {
+const formatDate = (dateStr: string) => {
+  const date = new Date(dateStr);
   return date.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -24,19 +24,21 @@ const formatDate = (date: Date) => {
 };
 
 const siteUrl = Astro.site?.href || 'https://centrify.io';
+const postDate = new Date(post.date);
+const updatedDate = post.updated_date ? new Date(post.updated_date) : null;
 
 // JSON-LD Structured Data
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
-  headline: post.data.title,
-  description: post.data.description,
-  image: post.data.image ? `${siteUrl}${post.data.image}` : `${siteUrl}/logo-icon.png`,
-  datePublished: post.data.date.toISOString(),
-  dateModified: (post.data.updatedDate || post.data.date).toISOString(),
+  headline: post.title,
+  description: post.description,
+  image: post.image ? `${siteUrl}${post.image}` : `${siteUrl}/logo-icon.png`,
+  datePublished: postDate.toISOString(),
+  dateModified: (updatedDate || postDate).toISOString(),
   author: {
     '@type': 'Person',
-    name: post.data.author,
+    name: post.author,
   },
   publisher: {
     '@type': 'Organization',
@@ -50,7 +52,7 @@ const jsonLd = {
     '@type': 'WebPage',
     '@id': `${siteUrl}/blog/${post.slug}`,
   },
-  keywords: post.data.tags.join(', '),
+  keywords: post.tags?.join(', ') || '',
 };
 ---
 
@@ -60,14 +62,14 @@ const jsonLd = {
     <link rel="icon" type="image/png" href="/logo-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <SEO
-      title={post.data.title}
-      description={post.data.description}
-      image={post.data.image}
+      title={post.title}
+      description={post.description}
+      image={post.image}
       article={{
-        publishedTime: post.data.date.toISOString(),
-        modifiedTime: post.data.updatedDate?.toISOString(),
-        author: post.data.author,
-        tags: post.data.tags,
+        publishedTime: postDate.toISOString(),
+        modifiedTime: updatedDate?.toISOString(),
+        author: post.author,
+        tags: post.tags || [],
       }}
     />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -563,8 +565,8 @@ const jsonLd = {
                   <line x1="8" y1="2" x2="8" y2="6"></line>
                   <line x1="3" y1="10" x2="21" y2="10"></line>
                 </svg>
-                <time datetime={post.data.date.toISOString()}>
-                  {formatDate(post.data.date)}
+                <time datetime={postDate.toISOString()}>
+                  {formatDate(post.date)}
                 </time>
               </span>
               <span>
@@ -572,32 +574,30 @@ const jsonLd = {
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
                 </svg>
-                {post.data.author}
+                {post.author}
               </span>
             </div>
 
-            {post.data.tags.length > 0 && (
+            {post.tags && post.tags.length > 0 && (
               <div class="article-tags">
-                {post.data.tags.map((tag) => (
+                {post.tags.map((tag) => (
                   <span class="article-tag">{tag}</span>
                 ))}
               </div>
             )}
 
-            <h1>{post.data.title}</h1>
+            <h1>{post.title}</h1>
           </header>
 
-          {post.data.image && (
+          {post.image && (
             <img
-              src={post.data.image}
-              alt={post.data.imageAlt || post.data.title}
+              src={post.image}
+              alt={post.image_alt || post.title}
               class="article-image"
             />
           )}
 
-          <div class="article-content">
-            <Content />
-          </div>
+          <div class="article-content" set:html={htmlContent} />
         </article>
       </div>
     </main>

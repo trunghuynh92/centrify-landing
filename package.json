@@ -12,6 +12,9 @@
     "@astrojs/rss": "^4.0.14",
     "@astrojs/sitemap": "^3.6.0",
     "@astrojs/vercel": "^9.0.2",
-    "astro": "^5.16.2"
+    "@supabase/supabase-js": "^2.89.0",
+    "@types/marked": "^5.0.2",
+    "astro": "^5.16.2",
+    "marked": "^17.0.1"
   }
 }

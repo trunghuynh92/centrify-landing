@@ -1,11 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
+import { getPosts } from '../../lib/blog';
 import SEO from '../../components/SEO.astro';
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+export const prerender = false;
 
-const formatDate = (date: Date) => {
+const posts = await getPosts();
+
+const formatDate = (dateStr: string) => {
+  const date = new Date(dateStr);
   return date.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -469,10 +471,10 @@ const formatDate = (date: Date) => {
           <div class="posts-grid">
             {posts.map((post) => (
               <a href={`/blog/${post.slug}`} class="post-card">
-                {post.data.image && (
+                {post.image && (
                   <img
-                    src={post.data.image}
-                    alt={post.data.imageAlt || post.data.title}
+                    src={post.image}
+                    alt={post.image_alt || post.title}
                     class="post-image"
                   />
                 )}
@@ -485,20 +487,20 @@ const formatDate = (date: Date) => {
                         <line x1="8" y1="2" x2="8" y2="6"></line>
                         <line x1="3" y1="10" x2="21" y2="10"></line>
                       </svg>
-                      <time datetime={post.data.date.toISOString()}>
-                        {formatDate(post.data.date)}
+                      <time datetime={new Date(post.date).toISOString()}>
+                        {formatDate(post.date)}
                       </time>
                     </span>
-                    {post.data.tags.length > 0 && (
+                    {post.tags && post.tags.length > 0 && (
                       <div class="post-tags">
-                        {post.data.tags.slice(0, 2).map((tag) => (
+                        {post.tags.slice(0, 2).map((tag) => (
                           <span class="post-tag">#{tag}</span>
                         ))}
                       </div>
                     )}
                   </div>
-                  <h2>{post.data.title}</h2>
-                  <p>{post.data.description}</p>
+                  <h2>{post.title}</h2>
+                  <p>{post.description}</p>
                   <span class="read-more">
                     Read article
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
