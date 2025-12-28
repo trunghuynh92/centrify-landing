@@ -1,0 +1,392 @@
+---
+interface Props {
+  activePage?: 'home' | 'finance' | 'seo' | 'crm' | 'blog';
+  ctaUrl?: string;
+  ctaText?: string;
+}
+
+const {
+  activePage = 'home',
+  ctaUrl = 'https://app.centrify.io',
+  ctaText = 'Get Started'
+} = Astro.props;
+
+const products = [
+  {
+    name: 'Finance',
+    href: '/finance',
+    description: 'Financial management',
+    color: '#0EA5E9'
+  },
+  {
+    name: 'SEO',
+    href: '/seo',
+    description: 'Content & SEO tools',
+    color: '#10B981'
+  },
+  {
+    name: 'CRM',
+    href: '/crm',
+    description: 'Smart AI CRM',
+    color: '#8B5CF6'
+  },
+];
+---
+
+<header>
+  <nav>
+    <a href="/" class="logo">
+      <img src="/logo.png" alt="Centrify" />
+    </a>
+    <ul class="nav-links">
+      <li class="dropdown">
+        <button class="dropdown-trigger" aria-expanded="false">
+          Products
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </button>
+        <div class="dropdown-menu">
+          {products.map(product => (
+            <a href={product.href} class:list={['dropdown-item', { active: activePage === product.name.toLowerCase() }]}>
+              <span class="product-dot" style={`background: ${product.color}`}></span>
+              <div>
+                <span class="product-name">{product.name}</span>
+                <span class="product-desc">{product.description}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </li>
+      <li><a href="/blog" class:list={{ active: activePage === 'blog' }}>Blog</a></li>
+    </ul>
+    <a href={ctaUrl} class="btn btn-primary desktop-cta">{ctaText}</a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu">
+    <div class="mobile-products">
+      <span class="mobile-label">Products</span>
+      {products.map(product => (
+        <a href={product.href} class:list={{ active: activePage === product.name.toLowerCase() }}>
+          <span class="product-dot" style={`background: ${product.color}`}></span>
+          {product.name}
+        </a>
+      ))}
+    </div>
+    <ul>
+      <li><a href="/blog" class:list={{ active: activePage === 'blog' }}>Blog</a></li>
+    </ul>
+    <a href={ctaUrl} class="btn btn-primary">{ctaText}</a>
+  </div>
+</header>
+
+<style>
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 16px 24px;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .logo img {
+    height: 44px;
+    width: auto;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links > li > a,
+  .dropdown-trigger {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.2s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav-links > li > a:hover,
+  .nav-links > li > a.active,
+  .dropdown-trigger:hover {
+    color: var(--text);
+  }
+
+  /* Dropdown */
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 12px;
+    min-width: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .dropdown:hover .dropdown-menu,
+  .dropdown-trigger[aria-expanded="true"] + .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: var(--text-muted);
+    border-radius: 10px;
+    transition: all 0.2s;
+  }
+
+  .dropdown-item:hover,
+  .dropdown-item.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+  }
+
+  .product-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dropdown-item div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-name {
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .product-desc {
+    font-size: 12px;
+    opacity: 0.7;
+  }
+
+  /* Mobile Menu Button */
+  .mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    gap: 5px;
+    padding: 10px;
+  }
+
+  .mobile-menu-btn span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .mobile-menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Mobile Menu */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 90px;
+    left: 16px;
+    right: 16px;
+    background: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    z-index: 99;
+  }
+
+  .mobile-menu.active {
+    display: block;
+  }
+
+  .mobile-products {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 16px;
+  }
+
+  .mobile-products a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+
+  .mobile-products a:hover,
+  .mobile-products a.active {
+    background: var(--bg-card);
+    color: var(--text);
+  }
+
+  .mobile-menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mobile-menu ul a {
+    display: block;
+    padding: 12px 16px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+
+  .mobile-menu ul a:hover,
+  .mobile-menu ul a.active {
+    background: var(--bg-card);
+    color: var(--text);
+  }
+
+  .mobile-menu .btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  @media (max-width: 968px) {
+    .nav-links {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: flex;
+    }
+
+    .desktop-cta {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const dropdownTrigger = document.querySelector('.dropdown-trigger');
+
+  menuBtn?.addEventListener('click', () => {
+    menuBtn.classList.toggle('active');
+    mobileMenu?.classList.toggle('active');
+    menuBtn.setAttribute('aria-expanded',
+      menuBtn.classList.contains('active').toString()
+    );
+  });
+
+  // Close menu when clicking a link
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuBtn?.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      menuBtn?.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Dropdown accessibility
+  dropdownTrigger?.addEventListener('click', () => {
+    const expanded = dropdownTrigger.getAttribute('aria-expanded') === 'true';
+    dropdownTrigger.setAttribute('aria-expanded', (!expanded).toString());
+  });
+
+  // Close dropdown on outside click
+  document.addEventListener('click', (e) => {
+    const dropdown = document.querySelector('.dropdown');
+    if (dropdown && !dropdown.contains(e.target as Node)) {
+      dropdownTrigger?.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>

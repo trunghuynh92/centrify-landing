@@ -1,229 +1,110 @@
 ---
-const features = [
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+
+const products = [
   {
-    icon: "M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z",
-    title: "Multi-Entity Accounting",
-    description: "Manage finances across multiple companies, branches, and entities from one dashboard."
+    id: 'finance',
+    name: 'Centrify Finance',
+    tagline: 'Financial Management Made Simple',
+    description: 'Track cash flow, import bank statements, and manage multiple business entities from one powerful dashboard.',
+    href: '/finance',
+    appUrl: 'https://app.centrify.io',
+    color: '#0EA5E9',
+    accentColor: '#22D3EE',
+    icon: 'M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z',
+    features: [
+      'Multi-entity accounting',
+      'Bank statement import',
+      'Cash flow reports',
+      'Scheduled payments'
+    ]
   },
   {
-    icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
-    title: "Bank Statement Import",
-    description: "Import CSV/Excel statements with smart column detection and automatic reconciliation."
+    id: 'seo',
+    name: 'Centrify SEO',
+    tagline: 'AI-Powered Content & SEO',
+    description: 'Analyze your site, strategize keywords, auto-generate optimized content, and manage your media assets with AI.',
+    href: '/seo',
+    appUrl: 'https://content.centrify.io',
+    color: '#10B981',
+    accentColor: '#34D399',
+    icon: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7',
+    features: [
+      'AI site analysis',
+      'Keyword strategy planning',
+      'Auto content writing',
+      'Platform integrations'
+    ]
   },
   {
-    icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
-    title: "Cash Flow Reports",
-    description: "Real-time insights into your cash flow with beautiful charts and detailed breakdowns."
+    id: 'crm',
+    name: 'Centrify CRM',
+    tagline: 'Smart CRM That Learns',
+    description: 'AI chatbot that understands your customers, makes bookings, and improves through every conversation.',
+    href: '/crm',
+    appUrl: 'https://chat.centrify.io',
+    color: '#8B5CF6',
+    accentColor: '#EC4899',
+    icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z',
+    features: [
+      'AI chat assistant',
+      'Customer intelligence',
+      'Multi-channel support',
+      'Learning & improvement'
+    ]
+  }
+];
+
+const reasons = [
+  {
+    icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+    title: 'AI-Powered',
+    description: 'Leverage cutting-edge AI across all tools to automate tasks and gain deeper insights.'
   },
   {
-    icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
-    title: "Scheduled Payments",
-    description: "Never miss a payment with automated scheduling and recurring transaction support."
+    icon: 'M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z',
+    title: 'Unified Platform',
+    description: 'One login, one dashboard, seamless data flow between Finance, SEO, and CRM tools.'
   },
   {
-    icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
-    title: "Checkpoint Reconciliation",
-    description: "Verify account balances with smart checkpoint system and automatic adjustments."
-  },
-  {
-    icon: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z",
-    title: "Mobile Ready",
-    description: "Access your finances anywhere with our responsive web app and native mobile experience."
+    icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+    title: 'Enterprise Ready',
+    description: 'Built for scale with robust security, multi-tenant support, and reliable infrastructure.'
   }
 ];
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="/logo-icon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Centrify - Modern financial management for businesses. Track cash flow, import bank statements, manage multiple entities." />
-    <title>Centrify - Financial Management Made Simple</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<BaseLayout
+  title="Centrify - One Platform, Three Powerful Solutions"
+  description="Manage your finances, optimize your content for SEO, and automate customer relationships with AI-powered tools. All in one unified platform."
+>
+  <Fragment slot="head">
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      :root {
-        /* Brand Colors from Logo */
-        --primary: #0EA5E9;
-        --primary-dark: #0284C7;
-        --teal: #0D9488;
-        --cyan: #22D3EE;
-        --navy: #0F172A;
-        --navy-light: #1E293B;
-        --purple: #8B5CF6;
-        --pink: #EC4899;
-
-        /* UI Colors */
-        --bg-dark: #0F172A;
-        --bg-card: #1E293B;
-        --text: #F8FAFC;
-        --text-muted: #94A3B8;
-        --border: #334155;
-
-        /* Glassmorphism */
-        --glass-bg: rgba(255, 255, 255, 0.1);
-        --glass-border: rgba(255, 255, 255, 0.2);
-        --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        font-family: 'League Spartan', -apple-system, BlinkMacSystemFont, sans-serif;
-        background: var(--bg-dark);
-        color: var(--text);
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 24px;
-      }
-
-      /* Glassmorphism Card */
-      .glass {
-        background: var(--glass-bg);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid var(--glass-border);
-        border-radius: 20px;
-        box-shadow: var(--glass-shadow);
-      }
-
-      .glass-subtle {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-      }
-
-      /* Header */
-      header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 100;
-        padding: 16px 24px;
-      }
-
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 12px 24px;
-        background: rgba(15, 23, 42, 0.7);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-      }
-
-      .logo {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-      }
-
-      .logo img {
-        height: 44px;
-        width: auto;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 32px;
-        list-style: none;
-      }
-
-      .nav-links a {
-        color: var(--text-muted);
-        text-decoration: none;
-        font-size: 15px;
-        font-weight: 500;
-        transition: color 0.2s;
-      }
-
-      .nav-links a:hover {
-        color: var(--text);
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 12px 28px;
-        border-radius: 12px;
-        font-weight: 600;
-        font-size: 15px;
-        text-decoration: none;
-        transition: all 0.3s;
-        cursor: pointer;
-        border: none;
-        font-family: 'League Spartan', sans-serif;
-      }
-
-      .btn-primary {
-        background: linear-gradient(135deg, var(--primary) 0%, var(--teal) 100%);
-        color: white;
-        box-shadow: 0 4px 20px rgba(14, 165, 233, 0.4);
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(14, 165, 233, 0.5);
-      }
-
-      .btn-glass {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        color: var(--text);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .btn-glass:hover {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.3);
-      }
-
       /* Hero */
       .hero {
         min-height: 100vh;
         display: flex;
         align-items: center;
-        padding-top: 100px;
+        padding-top: 120px;
+        padding-bottom: 80px;
         position: relative;
         overflow: hidden;
       }
 
-      /* Vibrant Background Blobs */
+      /* Background Blobs */
       .blob {
         position: absolute;
         border-radius: 50%;
         filter: blur(80px);
-        opacity: 0.6;
+        opacity: 0.5;
         animation: blobFloat 20s ease-in-out infinite;
       }
 
       .blob-1 {
         width: 600px;
         height: 600px;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--cyan) 100%);
+        background: linear-gradient(135deg, #0EA5E9 0%, #22D3EE 100%);
         top: -200px;
         right: -100px;
         animation-delay: 0s;
@@ -232,7 +113,7 @@ const features = [
       .blob-2 {
         width: 500px;
         height: 500px;
-        background: linear-gradient(135deg, var(--teal) 0%, var(--primary) 100%);
+        background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
         bottom: -150px;
         left: -100px;
         animation-delay: -5s;
@@ -241,22 +122,12 @@ const features = [
       .blob-3 {
         width: 400px;
         height: 400px;
-        background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
+        background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         animation-delay: -10s;
-        opacity: 0.4;
-      }
-
-      .blob-4 {
-        width: 300px;
-        height: 300px;
-        background: linear-gradient(135deg, var(--cyan) 0%, var(--teal) 100%);
-        top: 20%;
-        left: 10%;
-        animation-delay: -15s;
-        opacity: 0.5;
+        opacity: 0.3;
       }
 
       @keyframes blobFloat {
@@ -267,262 +138,251 @@ const features = [
       }
 
       .hero-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 64px;
-        align-items: center;
+        text-align: center;
         position: relative;
         z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
       }
 
-      .hero-text h1 {
-        font-size: 60px;
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 100px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text);
+        margin-bottom: 24px;
+      }
+
+      .hero-badge span {
+        width: 8px;
+        height: 8px;
+        background: #22C55E;
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+      }
+
+      .hero-content h1 {
+        font-size: 64px;
         font-weight: 800;
-        line-height: 1.05;
+        line-height: 1.1;
         margin-bottom: 24px;
         letter-spacing: -0.02em;
       }
 
-      .hero-text h1 .gradient {
-        background: linear-gradient(135deg, var(--cyan) 0%, var(--primary) 50%, var(--teal) 100%);
+      .hero-content h1 .gradient {
+        background: linear-gradient(135deg, #22D3EE 0%, #0EA5E9 25%, #10B981 50%, #8B5CF6 75%, #EC4899 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
 
-      .hero-text p {
-        font-size: 18px;
+      .hero-content p {
+        font-size: 20px;
         color: var(--text-muted);
-        margin-bottom: 36px;
-        max-width: 480px;
-        font-weight: 400;
+        margin-bottom: 40px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
         line-height: 1.7;
       }
 
       .hero-buttons {
         display: flex;
         gap: 16px;
-      }
-
-      .hero-visual {
-        position: relative;
-        display: flex;
         justify-content: center;
-        align-items: center;
       }
 
-      /* Glassmorphism Dashboard Card */
-      .dashboard-card {
-        width: 100%;
-        max-width: 450px;
-        padding: 28px;
-        background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 24px;
-        box-shadow:
-          0 8px 32px rgba(0, 0, 0, 0.3),
-          inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      }
-
-      .dashboard-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 24px;
-      }
-
-      .dashboard-label {
-        font-size: 14px;
-        color: var(--text-muted);
-        margin-bottom: 4px;
-      }
-
-      .dashboard-amount {
-        font-size: 42px;
-        font-weight: 700;
-        background: linear-gradient(135deg, var(--text) 0%, var(--cyan) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .dashboard-badge {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        padding: 6px 12px;
-        background: rgba(34, 197, 94, 0.2);
-        border-radius: 100px;
-        color: #22C55E;
-        font-size: 14px;
-        font-weight: 600;
-      }
-
-      .dashboard-chart {
-        height: 120px;
-        background: linear-gradient(180deg, rgba(14, 165, 233, 0.3) 0%, transparent 100%);
-        border-radius: 12px;
-        position: relative;
-        overflow: hidden;
-        margin-bottom: 20px;
-      }
-
-      .dashboard-chart::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--primary), var(--cyan), var(--teal));
-      }
-
-      .dashboard-stats {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-      }
-
-      .stat-card {
-        padding: 16px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      .stat-label {
-        font-size: 12px;
-        color: var(--text-muted);
-        margin-bottom: 4px;
-      }
-
-      .stat-value {
-        font-size: 20px;
-        font-weight: 600;
-      }
-
-      .stat-value.income {
-        color: #22C55E;
-      }
-
-      .stat-value.expense {
-        color: #F43F5E;
-      }
-
-      /* Features */
-      .features {
+      /* Products Section */
+      .products {
         padding: 120px 0;
         position: relative;
       }
 
-      .section-header {
-        text-align: center;
-        margin-bottom: 64px;
-      }
-
-      .section-tag {
-        display: inline-block;
-        padding: 10px 24px;
-        background: rgba(14, 165, 233, 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(14, 165, 233, 0.3);
-        border-radius: 100px;
-        font-size: 13px;
-        font-weight: 600;
-        color: var(--cyan);
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        margin-bottom: 20px;
-      }
-
-      .section-header h2 {
-        font-size: 44px;
-        font-weight: 700;
-        margin-bottom: 16px;
-        letter-spacing: -0.01em;
-      }
-
-      .section-header p {
-        font-size: 18px;
-        color: var(--text-muted);
-        max-width: 600px;
-        margin: 0 auto;
-        font-weight: 400;
-      }
-
-      .features-grid {
+      .products-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 24px;
       }
 
-      .feature-card {
+      .product-card {
         padding: 32px;
         background: rgba(255, 255, 255, 0.05);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
+        border-radius: 24px;
         transition: all 0.3s;
         position: relative;
         overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        display: block;
       }
 
-      .feature-card::before {
+      .product-card::before {
         content: '';
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        height: 3px;
+        background: var(--product-color);
+        opacity: 0;
+        transition: opacity 0.3s;
       }
 
-      .feature-card:hover {
+      .product-card:hover {
         background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(14, 165, 233, 0.3);
         transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
       }
 
-      .feature-icon {
-        width: 56px;
-        height: 56px;
-        background: linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(13, 148, 136, 0.2) 100%);
+      .product-card:hover::before {
+        opacity: 1;
+      }
+
+      .product-icon {
+        width: 64px;
+        height: 64px;
+        background: var(--product-color);
+        background: linear-gradient(135deg, var(--product-color) 0%, var(--product-accent) 100%);
         border-radius: 16px;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 20px;
-        border: 1px solid rgba(14, 165, 233, 0.2);
+        margin-bottom: 24px;
+        opacity: 0.9;
       }
 
-      .feature-icon svg {
-        width: 28px;
-        height: 28px;
-        stroke: var(--cyan);
+      .product-icon svg {
+        width: 32px;
+        height: 32px;
+        stroke: white;
       }
 
-      .feature-card h3 {
-        font-size: 20px;
+      .product-card h3 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .product-tagline {
+        font-size: 15px;
+        color: var(--product-color);
         font-weight: 600;
         margin-bottom: 12px;
       }
 
-      .feature-card p {
+      .product-card > p {
         font-size: 15px;
         color: var(--text-muted);
         line-height: 1.7;
-        font-weight: 400;
+        margin-bottom: 24px;
       }
 
-      /* CTA */
+      .product-features {
+        list-style: none;
+        margin-bottom: 24px;
+      }
+
+      .product-features li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        color: var(--text-muted);
+        margin-bottom: 10px;
+      }
+
+      .product-features li svg {
+        width: 16px;
+        height: 16px;
+        stroke: var(--product-color);
+        flex-shrink: 0;
+      }
+
+      .product-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--product-color);
+        transition: gap 0.2s;
+      }
+
+      .product-card:hover .product-cta {
+        gap: 12px;
+      }
+
+      .product-cta svg {
+        width: 18px;
+        height: 18px;
+        stroke: currentColor;
+      }
+
+      /* Why Section */
+      .why {
+        padding: 120px 0;
+        position: relative;
+      }
+
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+      }
+
+      .why-card {
+        text-align: center;
+        padding: 40px 32px;
+      }
+
+      .why-icon {
+        width: 72px;
+        height: 72px;
+        background: linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 24px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .why-icon svg {
+        width: 36px;
+        height: 36px;
+        stroke: var(--cyan);
+      }
+
+      .why-card h3 {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+
+      .why-card p {
+        font-size: 15px;
+        color: var(--text-muted);
+        line-height: 1.7;
+      }
+
+      /* CTA Section */
       .cta {
         padding: 120px 0;
         text-align: center;
-        position: relative;
       }
 
       .cta-card {
@@ -557,182 +417,43 @@ const features = [
         font-size: 18px;
         color: var(--text-muted);
         margin-bottom: 36px;
-        font-weight: 400;
-      }
-
-      /* Footer */
-      footer {
-        padding: 48px 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .footer-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .footer-logo {
-        height: 32px;
-        width: auto;
-      }
-
-      .footer-text {
-        font-size: 14px;
-        color: var(--text-muted);
-        font-weight: 400;
       }
 
       /* Responsive */
       @media (max-width: 968px) {
-        .hero-content {
+        .hero-content h1 {
+          font-size: 48px;
+        }
+
+        .products-grid,
+        .why-grid {
           grid-template-columns: 1fr;
-          text-align: center;
-        }
-
-        .hero-text p {
-          margin: 0 auto 36px;
-        }
-
-        .hero-buttons {
-          justify-content: center;
-        }
-
-        .hero-visual {
-          display: none;
-        }
-
-        .features-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .nav-links {
-          display: none;
-        }
-
-        .blob {
-          opacity: 0.4;
-        }
-
-        .mobile-menu-btn {
-          display: flex;
-        }
-
-        .desktop-cta {
-          display: none;
-        }
-      }
-
-      /* Mobile Menu */
-      .mobile-menu-btn {
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 44px;
-        height: 44px;
-        background: transparent;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        cursor: pointer;
-        gap: 5px;
-        padding: 10px;
-      }
-
-      .mobile-menu-btn span {
-        display: block;
-        width: 20px;
-        height: 2px;
-        background: var(--text);
-        border-radius: 2px;
-        transition: all 0.3s;
-      }
-
-      .mobile-menu-btn.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
-
-      .mobile-menu-btn.active span:nth-child(2) {
-        opacity: 0;
-      }
-
-      .mobile-menu-btn.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
-      }
-
-      .mobile-menu {
-        display: none;
-        position: fixed;
-        top: 73px;
-        left: 0;
-        right: 0;
-        background: rgba(15, 23, 42, 0.98);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid var(--border);
-        padding: 24px;
-        z-index: 99;
-      }
-
-      .mobile-menu.active {
-        display: block;
-      }
-
-      .mobile-menu ul {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .mobile-menu a {
-        display: block;
-        padding: 12px 16px;
-        color: var(--text-muted);
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: 500;
-        border-radius: 8px;
-        transition: all 0.2s;
-      }
-
-      .mobile-menu a:hover {
-        background: var(--bg-card);
-        color: var(--text);
-      }
-
-      .mobile-menu .btn {
-        width: 100%;
-        justify-content: center;
-        margin-top: 16px;
-      }
-
-      @media (max-width: 640px) {
-        .hero-text h1 {
-          font-size: 40px;
-        }
-
-        .section-header h2, .cta h2 {
-          font-size: 32px;
-        }
-
-        .features-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .hero-buttons {
-          flex-direction: column;
-          width: 100%;
-          max-width: 300px;
+          max-width: 500px;
           margin: 0 auto;
         }
 
-        .btn {
-          justify-content: center;
+        .blob {
+          opacity: 0.3;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero-content h1 {
+          font-size: 36px;
         }
 
-        .footer-content {
+        .hero-content p {
+          font-size: 16px;
+        }
+
+        .hero-buttons {
           flex-direction: column;
-          gap: 16px;
+          align-items: center;
+        }
+
+        .section-header h2,
+        .cta h2 {
+          font-size: 32px;
         }
 
         .cta-card {
@@ -740,155 +461,117 @@ const features = [
         }
       }
     </style>
-  </head>
-  <body>
-    <!-- Background Blobs -->
+  </Fragment>
+
+  <Fragment slot="background">
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
-    <div class="blob blob-4"></div>
+  </Fragment>
 
-    <header>
-      <nav>
-        <a href="/" class="logo">
-          <img src="/logo.png" alt="Centrify" />
-        </a>
-        <ul class="nav-links">
-          <li><a href="#features">Features</a></li>
-          <li><a href="/blog">Blog</a></li>
-        </ul>
-        <a href="https://app.centrify.io" class="btn btn-primary desktop-cta">Open App</a>
-        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+  <Navigation slot="header" activePage="home" ctaText="Get Started" />
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
           <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </nav>
-      <div class="mobile-menu">
-        <ul>
-          <li><a href="#features">Features</a></li>
-          <li><a href="/blog">Blog</a></li>
-        </ul>
-        <a href="https://app.centrify.io" class="btn btn-primary">Open App</a>
+          Now with AI-powered tools
+        </div>
+        <h1>One Platform,<br><span class="gradient">Three Powerful Solutions</span></h1>
+        <p>Manage your finances, optimize your content for SEO, and automate customer relationships. All powered by AI, all in one unified platform.</p>
+        <div class="hero-buttons">
+          <a href="#products" class="btn btn-primary">
+            Explore Products
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+          </a>
+          <a href="/blog" class="btn btn-glass">Read Our Blog</a>
+        </div>
       </div>
-    </header>
+    </div>
+  </section>
 
-    <script>
-      const menuBtn = document.querySelector('.mobile-menu-btn');
-      const mobileMenu = document.querySelector('.mobile-menu');
-
-      menuBtn?.addEventListener('click', () => {
-        menuBtn.classList.toggle('active');
-        mobileMenu?.classList.toggle('active');
-        menuBtn.setAttribute('aria-expanded',
-          menuBtn.classList.contains('active').toString()
-        );
-      });
-
-      // Close menu when clicking a link
-      mobileMenu?.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          menuBtn?.classList.remove('active');
-          mobileMenu.classList.remove('active');
-          menuBtn?.setAttribute('aria-expanded', 'false');
-        });
-      });
-    </script>
-
-    <main>
-      <section class="hero">
-        <div class="container">
-          <div class="hero-content">
-            <div class="hero-text">
-              <h1>Financial Management <span class="gradient">Made Simple</span></h1>
-              <p>Track cash flow, import bank statements, and manage multiple business entities - all from one powerful dashboard.</p>
-              <div class="hero-buttons">
-                <a href="https://app.centrify.io" class="btn btn-primary">
-                  Get Started Free
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </a>
-                <a href="#features" class="btn btn-glass">Learn More</a>
-              </div>
+  <section class="products" id="products">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Products</span>
+        <h2>Choose the tools you need</h2>
+        <p>Each product is powerful on its own, and even better together. Start with what you need, add more as you grow.</p>
+      </div>
+      <div class="products-grid">
+        {products.map(product => (
+          <a
+            href={product.href}
+            class="product-card"
+            style={`--product-color: ${product.color}; --product-accent: ${product.accentColor}`}
+          >
+            <div class="product-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d={product.icon} />
+              </svg>
             </div>
-            <div class="hero-visual">
-              <div class="dashboard-card">
-                <div class="dashboard-header">
-                  <div>
-                    <div class="dashboard-label">Total Balance</div>
-                    <div class="dashboard-amount">$124,563</div>
-                  </div>
-                  <div class="dashboard-badge">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M7 17l9.2-9.2M17 17V7H7"/>
-                    </svg>
-                    +12.5%
-                  </div>
-                </div>
-                <div class="dashboard-chart"></div>
-                <div class="dashboard-stats">
-                  <div class="stat-card">
-                    <div class="stat-label">Income</div>
-                    <div class="stat-value income">+$8,420</div>
-                  </div>
-                  <div class="stat-card">
-                    <div class="stat-label">Expenses</div>
-                    <div class="stat-value expense">-$3,150</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="features" id="features">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-tag">Features</span>
-            <h2>Everything you need to manage finances</h2>
-            <p>Powerful tools designed for modern businesses. Simple enough for startups, robust enough for enterprises.</p>
-          </div>
-          <div class="features-grid">
-            {features.map(feature => (
-              <div class="feature-card">
-                <div class="feature-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d={feature.icon} />
+            <h3>{product.name}</h3>
+            <p class="product-tagline">{product.tagline}</p>
+            <p>{product.description}</p>
+            <ul class="product-features">
+              {product.features.map(feature => (
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
                   </svg>
-                </div>
-                <h3>{feature.title}</h3>
-                <p>{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section class="cta">
-        <div class="container">
-          <div class="cta-card">
-            <h2>Ready to take control of your finances?</h2>
-            <p>Join thousands of businesses managing their money smarter with Centrify.</p>
-            <a href="https://app.centrify.io" class="btn btn-primary">
-              Start Free Trial
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <span class="product-cta">
+              Learn more
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
-            </a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="container">
-        <div class="footer-content">
-          <img src="/logo.png" alt="Centrify" class="footer-logo" />
-          <p class="footer-text">&copy; 2025 Centrify. All rights reserved.</p>
-        </div>
+            </span>
+          </a>
+        ))}
       </div>
-    </footer>
-  </body>
-</html>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Why Centrify</span>
+        <h2>Built for modern businesses</h2>
+        <p>Whether you're a startup or enterprise, Centrify scales with your needs.</p>
+      </div>
+      <div class="why-grid">
+        {reasons.map(reason => (
+          <div class="why-card">
+            <div class="why-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d={reason.icon} />
+              </svg>
+            </div>
+            <h3>{reason.title}</h3>
+            <p>{reason.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Ready to transform your business?</h2>
+        <p>Join thousands of businesses using Centrify to work smarter.</p>
+        <a href="https://app.centrify.io" class="btn btn-primary">
+          Get Started Free
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

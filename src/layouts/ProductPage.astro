@@ -1,0 +1,427 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+interface ColorScheme {
+  primary: string;
+  accent: string;
+  primaryRgb: string;
+}
+
+interface Props {
+  productId: 'finance' | 'seo' | 'crm';
+  productName: string;
+  tagline: string;
+  description: string;
+  heroDescription: string;
+  features: Feature[];
+  colorScheme: ColorScheme;
+  appUrl: string;
+  ctaTitle: string;
+  ctaDescription: string;
+}
+
+const {
+  productId,
+  productName,
+  tagline,
+  description,
+  heroDescription,
+  features,
+  colorScheme,
+  appUrl,
+  ctaTitle,
+  ctaDescription
+} = Astro.props;
+---
+
+<BaseLayout title={`${productName} - ${tagline}`} description={description}>
+  <Fragment slot="head">
+    <style define:vars={{
+      productPrimary: colorScheme.primary,
+      productAccent: colorScheme.accent,
+      productPrimaryRgb: colorScheme.primaryRgb
+    }}>
+      :root {
+        --product-primary: var(--productPrimary);
+        --product-accent: var(--productAccent);
+        --product-primary-rgb: var(--productPrimaryRgb);
+      }
+
+      /* Hero */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding-top: 120px;
+        padding-bottom: 80px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Background Blobs */
+      .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.6;
+        animation: blobFloat 20s ease-in-out infinite;
+      }
+
+      .blob-1 {
+        width: 600px;
+        height: 600px;
+        background: linear-gradient(135deg, var(--product-primary) 0%, var(--product-accent) 100%);
+        top: -200px;
+        right: -100px;
+        animation-delay: 0s;
+      }
+
+      .blob-2 {
+        width: 500px;
+        height: 500px;
+        background: linear-gradient(135deg, var(--product-accent) 0%, var(--product-primary) 100%);
+        bottom: -150px;
+        left: -100px;
+        animation-delay: -5s;
+      }
+
+      .blob-3 {
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(135deg, var(--product-primary) 0%, var(--product-accent) 100%);
+        top: 40%;
+        left: 20%;
+        animation-delay: -10s;
+        opacity: 0.3;
+      }
+
+      @keyframes blobFloat {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        25% { transform: translate(30px, -30px) scale(1.05); }
+        50% { transform: translate(-20px, 20px) scale(0.95); }
+        75% { transform: translate(20px, 30px) scale(1.02); }
+      }
+
+      .hero-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-text h1 {
+        font-size: 56px;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -0.02em;
+      }
+
+      .hero-text h1 .gradient {
+        background: linear-gradient(135deg, var(--product-accent) 0%, var(--product-primary) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-text p {
+        font-size: 18px;
+        color: var(--text-muted);
+        margin-bottom: 36px;
+        max-width: 480px;
+        font-weight: 400;
+        line-height: 1.7;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 16px;
+      }
+
+      .hero-visual {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Product-colored button */
+      .btn-product {
+        background: linear-gradient(135deg, var(--product-primary) 0%, var(--product-accent) 100%);
+        color: white;
+        box-shadow: 0 4px 20px rgba(var(--product-primary-rgb), 0.4);
+      }
+
+      .btn-product:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(var(--product-primary-rgb), 0.5);
+      }
+
+      /* Features */
+      .features {
+        padding: 120px 0;
+        position: relative;
+      }
+
+      .section-tag-product {
+        display: inline-block;
+        padding: 10px 24px;
+        background: rgba(var(--product-primary-rgb), 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(var(--product-primary-rgb), 0.3);
+        border-radius: 100px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--product-primary);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 20px;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .feature-card {
+        padding: 32px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      }
+
+      .feature-card:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(var(--product-primary-rgb), 0.3);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(var(--product-primary-rgb), 0.15);
+      }
+
+      .feature-icon {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, rgba(var(--product-primary-rgb), 0.2) 0%, rgba(var(--product-primary-rgb), 0.1) 100%);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        border: 1px solid rgba(var(--product-primary-rgb), 0.2);
+      }
+
+      .feature-icon svg {
+        width: 28px;
+        height: 28px;
+        stroke: var(--product-primary);
+      }
+
+      .feature-card h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+
+      .feature-card p {
+        font-size: 15px;
+        color: var(--text-muted);
+        line-height: 1.7;
+        font-weight: 400;
+      }
+
+      /* CTA */
+      .cta {
+        padding: 120px 0;
+        text-align: center;
+        position: relative;
+      }
+
+      .cta-card {
+        padding: 80px 60px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 32px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(var(--product-primary-rgb), 0.6), transparent);
+      }
+
+      .cta h2 {
+        font-size: 44px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        letter-spacing: -0.01em;
+      }
+
+      .cta p {
+        font-size: 18px;
+        color: var(--text-muted);
+        margin-bottom: 36px;
+        font-weight: 400;
+      }
+
+      /* Responsive */
+      @media (max-width: 968px) {
+        .hero-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .hero-text p {
+          margin: 0 auto 36px;
+        }
+
+        .hero-buttons {
+          justify-content: center;
+        }
+
+        .hero-visual {
+          display: none;
+        }
+
+        .features-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .blob {
+          opacity: 0.4;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero-text h1 {
+          font-size: 40px;
+        }
+
+        .section-header h2, .cta h2 {
+          font-size: 32px;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          width: 100%;
+          max-width: 300px;
+          margin: 0 auto;
+        }
+
+        .btn {
+          justify-content: center;
+        }
+
+        .cta-card {
+          padding: 48px 24px;
+        }
+      }
+    </style>
+  </Fragment>
+
+  <Fragment slot="background">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </Fragment>
+
+  <Navigation slot="header" activePage={productId} ctaUrl={appUrl} ctaText="Open App" />
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>{tagline.split(' ').slice(0, -1).join(' ')} <span class="gradient">{tagline.split(' ').slice(-1)[0]}</span></h1>
+          <p>{heroDescription}</p>
+          <div class="hero-buttons">
+            <a href={appUrl} class="btn btn-product">
+              Get Started Free
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <a href="#features" class="btn btn-glass">View Features</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <slot name="hero-visual" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag-product">Features</span>
+        <h2>Everything you need</h2>
+        <p>Powerful tools designed to help you work smarter, not harder.</p>
+      </div>
+      <div class="features-grid">
+        {features.map(feature => (
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d={feature.icon} />
+              </svg>
+            </div>
+            <h3>{feature.title}</h3>
+            <p>{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <slot />
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>{ctaTitle}</h2>
+        <p>{ctaDescription}</p>
+        <a href={appUrl} class="btn btn-product">
+          Start Free Trial
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

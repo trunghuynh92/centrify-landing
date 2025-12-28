@@ -25,6 +25,7 @@ const {
 const siteName = 'Centrify';
 const siteUrl = Astro.site?.href || 'https://centrify.io';
 const fullImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
+// Don't append site name if title already contains Centrify (e.g., "Centrify Finance - ...")
 const fullTitle = title.includes('Centrify') ? title : `${title} | ${siteName}`;
 ---
 

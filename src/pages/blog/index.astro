@@ -1,6 +1,7 @@
 ---
 import { getPosts } from '../../lib/blog';
 import SEO from '../../components/SEO.astro';
+import Navigation from '../../components/Navigation.astro';
 
 export const prerender = false;
 
@@ -413,51 +414,7 @@ const formatDate = (dateStr: string) => {
     </style>
   </head>
   <body>
-    <header>
-      <nav>
-        <a href="/" class="logo">
-          <img src="/logo.png" alt="Centrify" />
-        </a>
-        <ul class="nav-links">
-          <li><a href="/#features">Features</a></li>
-          <li><a href="/blog" class="active">Blog</a></li>
-        </ul>
-        <a href="https://app.centrify.io" class="btn btn-primary desktop-cta">Open App</a>
-        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </nav>
-      <div class="mobile-menu">
-        <ul>
-          <li><a href="/#features">Features</a></li>
-          <li><a href="/blog" class="active">Blog</a></li>
-        </ul>
-        <a href="https://app.centrify.io" class="btn btn-primary">Open App</a>
-      </div>
-    </header>
-
-    <script>
-      const menuBtn = document.querySelector('.mobile-menu-btn');
-      const mobileMenu = document.querySelector('.mobile-menu');
-
-      menuBtn?.addEventListener('click', () => {
-        menuBtn.classList.toggle('active');
-        mobileMenu?.classList.toggle('active');
-        menuBtn.setAttribute('aria-expanded',
-          menuBtn.classList.contains('active').toString()
-        );
-      });
-
-      mobileMenu?.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          menuBtn?.classList.remove('active');
-          mobileMenu.classList.remove('active');
-          menuBtn?.setAttribute('aria-expanded', 'false');
-        });
-      });
-    </script>
+    <Navigation activePage="blog" />
 
     <main>
       <div class="container">

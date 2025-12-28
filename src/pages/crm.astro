@@ -1,0 +1,270 @@
+---
+import ProductPage from '../layouts/ProductPage.astro';
+
+const features = [
+  {
+    icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z",
+    title: "AI Chat Assistant",
+    description: "Rule-based and agentic AI that handles conversations, makes bookings, and answers questions 24/7."
+  },
+  {
+    icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z",
+    title: "Customer Intelligence",
+    description: "Automatically extract and enrich customer profiles from conversations - demographics, preferences, and behavior."
+  },
+  {
+    icon: "M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z",
+    title: "Multi-Channel Support",
+    description: "Unified inbox for web chat, Facebook Messenger, and API integrations. One view, all conversations."
+  },
+  {
+    icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+    title: "Live Chat Dashboard",
+    description: "Monitor conversations in real-time. Take over from AI when needed with seamless handoff."
+  },
+  {
+    icon: "M13 10V3L4 14h7v7l9-11h-7z",
+    title: "AI Learning Loop",
+    description: "The system learns from every conversation. Auto-suggests response templates and improves over time."
+  },
+  {
+    icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+    title: "Template-Driven Responses",
+    description: "Control AI response style with approved templates. Maintain brand voice across all interactions."
+  }
+];
+
+const colorScheme = {
+  primary: '#8B5CF6',
+  accent: '#EC4899',
+  primaryRgb: '139, 92, 246'
+};
+---
+
+<ProductPage
+  productId="crm"
+  productName="Centrify CRM"
+  tagline="Smart CRM That Learns"
+  description="AI chatbot that understands your customers, makes bookings, and continuously improves through every conversation. Multi-channel support for modern businesses."
+  heroDescription="An AI chatbot platform that truly understands your customers. Handle conversations, make bookings, extract insights, and learn from every interaction - automatically."
+  features={features}
+  colorScheme={colorScheme}
+  appUrl="https://chat.centrify.io"
+  ctaTitle="Ready to transform customer relationships?"
+  ctaDescription="Join thousands of businesses using Centrify CRM to delight customers."
+>
+  <Fragment slot="hero-visual">
+    <div class="crm-dashboard">
+      <div class="chat-preview">
+        <div class="chat-header">
+          <div class="chat-avatar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <div class="chat-info">
+            <div class="chat-name">Sarah Johnson</div>
+            <div class="chat-status">
+              <span class="status-dot"></span>
+              AI handling
+            </div>
+          </div>
+        </div>
+        <div class="chat-messages">
+          <div class="message customer">Hi, I'd like to book for Saturday</div>
+          <div class="message ai">
+            <span class="ai-badge">AI</span>
+            Sure! I'd be happy to help. What time works best for you?
+          </div>
+          <div class="message customer">Around 2pm please</div>
+        </div>
+      </div>
+      <div class="crm-stats">
+        <div class="crm-stat">
+          <div class="stat-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
+          <div class="stat-content">
+            <div class="stat-value">1,234</div>
+            <div class="stat-label">Customers</div>
+          </div>
+        </div>
+        <div class="crm-stat">
+          <div class="stat-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+            </svg>
+          </div>
+          <div class="stat-content">
+            <div class="stat-value">98%</div>
+            <div class="stat-label">AI Handled</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Fragment>
+</ProductPage>
+
+<style>
+  /* CRM Dashboard Visual */
+  .crm-dashboard {
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .chat-preview {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .chat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 16px;
+  }
+
+  .chat-avatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+  .chat-info {
+    flex: 1;
+  }
+
+  .chat-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .chat-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    background: #10B981;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .message {
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 13px;
+    line-height: 1.4;
+    max-width: 85%;
+  }
+
+  .message.customer {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+
+  .message.ai {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
+    color: var(--text);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .ai-badge {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #8B5CF6;
+    background: rgba(139, 92, 246, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    width: fit-content;
+  }
+
+  .crm-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .crm-stat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+  }
+
+  .stat-icon {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8B5CF6;
+  }
+
+  .stat-content {
+    flex: 1;
+  }
+
+  .stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+</style>

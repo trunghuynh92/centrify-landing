@@ -1,0 +1,228 @@
+---
+import SEO from '../components/SEO.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  article?: {
+    publishedTime: string;
+    modifiedTime?: string;
+    author?: string;
+    tags?: string[];
+  };
+}
+
+const { title, description, image, article } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/logo-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <SEO title={title} description={description} image={image} article={article} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style is:global>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        /* Base Brand Colors */
+        --primary: #0EA5E9;
+        --primary-dark: #0284C7;
+        --accent: #22D3EE;
+        --teal: #0D9488;
+        --cyan: #22D3EE;
+        --navy: #0F172A;
+        --navy-light: #1E293B;
+        --purple: #8B5CF6;
+        --pink: #EC4899;
+        --emerald: #10B981;
+        --green: #34D399;
+
+        /* UI Colors */
+        --bg-dark: #0F172A;
+        --bg-card: #1E293B;
+        --text: #F8FAFC;
+        --text-muted: #94A3B8;
+        --border: #334155;
+
+        /* Glassmorphism */
+        --glass-bg: rgba(255, 255, 255, 0.1);
+        --glass-border: rgba(255, 255, 255, 0.2);
+        --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'League Spartan', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--bg-dark);
+        color: var(--text);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Glassmorphism Card */
+      .glass {
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        box-shadow: var(--glass-shadow);
+      }
+
+      .glass-subtle {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+      }
+
+      /* Button Base */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 28px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 15px;
+        text-decoration: none;
+        transition: all 0.3s;
+        cursor: pointer;
+        border: none;
+        font-family: 'League Spartan', sans-serif;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--teal) 100%);
+        color: white;
+        box-shadow: 0 4px 20px rgba(14, 165, 233, 0.4);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(14, 165, 233, 0.5);
+      }
+
+      .btn-glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .btn-glass:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+
+      /* Section Headers */
+      .section-header {
+        text-align: center;
+        margin-bottom: 64px;
+      }
+
+      .section-tag {
+        display: inline-block;
+        padding: 10px 24px;
+        background: rgba(14, 165, 233, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(14, 165, 233, 0.3);
+        border-radius: 100px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 20px;
+      }
+
+      .section-header h2 {
+        font-size: 44px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        letter-spacing: -0.01em;
+      }
+
+      .section-header p {
+        font-size: 18px;
+        color: var(--text-muted);
+        max-width: 600px;
+        margin: 0 auto;
+        font-weight: 400;
+      }
+
+      /* Footer */
+      footer {
+        padding: 48px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-logo {
+        height: 32px;
+        width: auto;
+      }
+
+      .footer-text {
+        font-size: 14px;
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+
+      @media (max-width: 640px) {
+        .footer-content {
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        .section-header h2 {
+          font-size: 32px;
+        }
+      }
+    </style>
+    <slot name="head" />
+  </head>
+  <body>
+    <slot name="background" />
+    <slot name="header" />
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <img src="/logo.png" alt="Centrify" class="footer-logo" />
+          <p class="footer-text">&copy; 2025 Centrify. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <slot name="scripts" />
+  </body>
+</html>
