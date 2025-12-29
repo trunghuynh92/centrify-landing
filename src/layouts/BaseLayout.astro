@@ -191,6 +191,28 @@ const { title, description, image, article } = Astro.props;
         font-size: 14px;
         color: var(--text-muted);
         font-weight: 400;
+        margin: 0;
+      }
+
+      .footer-links {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .footer-link {
+        font-size: 14px;
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .footer-link:hover {
+        color: var(--primary);
+      }
+
+      .footer-divider {
+        color: var(--border);
       }
 
       @media (max-width: 640px) {
@@ -218,7 +240,11 @@ const { title, description, image, article } = Astro.props;
       <div class="container">
         <div class="footer-content">
           <img src="/logo.png" alt="Centrify" class="footer-logo" />
-          <p class="footer-text">&copy; 2025 Centrify. All rights reserved.</p>
+          <div class="footer-links">
+            <a href="/privacy" class="footer-link">Privacy Policy</a>
+            <span class="footer-divider">|</span>
+            <p class="footer-text">&copy; 2025 Centrify. All rights reserved.</p>
+          </div>
         </div>
       </div>
     </footer>
