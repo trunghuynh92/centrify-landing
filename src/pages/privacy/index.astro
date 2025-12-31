@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../../components/Navigation.astro';
+---
+
+<BaseLayout
+  title="Privacy Policies - Centrify"
+  description="Privacy policies for Centrify products. Choose your product to view the applicable privacy policy."
+>
+  <Fragment slot="head">
+    <style>
+      .privacy-index {
+        padding-top: 120px;
+        padding-bottom: 80px;
+        min-height: 100vh;
+      }
+
+      .privacy-container {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .privacy-header {
+        margin-bottom: 48px;
+      }
+
+      .privacy-header h1 {
+        font-size: 40px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        letter-spacing: -0.02em;
+      }
+
+      .privacy-header p {
+        font-size: 18px;
+        color: var(--text-muted);
+      }
+
+      .policy-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .policy-card {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 24px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+
+      .policy-card:hover {
+        background: rgba(14, 165, 233, 0.1);
+        border-color: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      .policy-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(14, 165, 233, 0.1);
+        border-radius: 12px;
+        flex-shrink: 0;
+      }
+
+      .policy-icon svg {
+        width: 24px;
+        height: 24px;
+        stroke: var(--primary);
+      }
+
+      .policy-info {
+        text-align: left;
+      }
+
+      .policy-info h2 {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+
+      .policy-info p {
+        font-size: 14px;
+        color: var(--text-muted);
+        margin: 0;
+      }
+
+      .policy-arrow {
+        margin-left: auto;
+        color: var(--text-muted);
+        transition: transform 0.2s;
+      }
+
+      .policy-card:hover .policy-arrow {
+        transform: translateX(4px);
+        color: var(--primary);
+      }
+
+      @media (max-width: 640px) {
+        .privacy-header h1 {
+          font-size: 28px;
+        }
+
+        .policy-card {
+          padding: 20px;
+        }
+      }
+    </style>
+  </Fragment>
+
+  <Navigation slot="header" />
+
+  <section class="privacy-index">
+    <div class="container">
+      <div class="privacy-container">
+        <header class="privacy-header">
+          <h1>Privacy Policies</h1>
+          <p>Select a product to view its privacy policy</p>
+        </header>
+
+        <div class="policy-cards">
+          <a href="/privacy/finance" class="policy-card">
+            <div class="policy-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+            <div class="policy-info">
+              <h2>Centrify Finance</h2>
+              <p>Personal Finance Manager App</p>
+            </div>
+            <svg class="policy-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+
+          <a href="/privacy/crm" class="policy-card">
+            <div class="policy-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <div class="policy-info">
+              <h2>Centrify CRM</h2>
+              <p>Chatbot & Smart CRM Platform</p>
+            </div>
+            <svg class="policy-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
