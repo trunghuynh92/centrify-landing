@@ -1,0 +1,208 @@
+---
+interface Props {
+  variant?: 'over-dark' | 'over-light';
+}
+const { variant = 'over-dark' } = Astro.props;
+
+const links = [
+  { label: 'Products', href: '#ecosystem' },
+  { label: 'How It Works', href: '#how' },
+  { label: 'Our Story', href: '#story' },
+  { label: 'Pricing', href: '#pricing' },
+  { label: 'Contact', href: '#contact' },
+];
+---
+
+<header class:list={['nav', `nav--${variant}`]} data-nav>
+  <div class="nav__inner">
+    <a href="/" class="nav__brand" aria-label="Centrify home">
+      <img src="/logo.png" alt="" class="nav__logo" width="28" height="28" />
+      <span class="nav__wordmark">Centrify</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      {links.map((l) => (
+        <a href={l.href} class="nav__link">{l.label}</a>
+      ))}
+    </nav>
+
+    <div class="nav__actions">
+      <a href="#pricing" class="btn btn-primary nav__cta">Get Early Access</a>
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false" data-burger>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="nav__sheet" data-sheet hidden>
+    <nav class="nav__sheetLinks" aria-label="Mobile">
+      {links.map((l) => (
+        <a href={l.href} class="nav__sheetLink" data-sheet-link>{l.label}</a>
+      ))}
+      <a href="#pricing" class="btn btn-primary" data-sheet-link>Get Early Access</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    transition: background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    border-bottom: 1px solid transparent;
+  }
+  .nav__inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 18px var(--section-x);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 32px;
+  }
+  .nav__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: -0.02em;
+  }
+  .nav__logo {
+    height: 28px;
+    width: 28px;
+    object-fit: contain;
+  }
+  .nav--over-dark .nav__brand { color: var(--c-paper); }
+  .nav--over-dark .nav__logo { filter: brightness(0) invert(1); }
+  .nav--over-light .nav__brand { color: var(--c-ink); }
+
+  .nav__links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+  }
+  .nav__link {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    opacity: 0.82;
+    transition: opacity 0.15s ease, color 0.15s ease;
+  }
+  .nav--over-dark .nav__link { color: var(--c-paper); }
+  .nav--over-light .nav__link { color: var(--c-ink); }
+  .nav__link:hover { opacity: 1; color: var(--c-teal); }
+
+  .nav__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-self: end;
+  }
+  .nav__cta { padding: 10px 18px; font-size: 14px; }
+
+  /* Scrolled state */
+  .nav.is-scrolled {
+    background: rgba(17, 17, 17, 0.78);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-bottom-color: var(--c-line-dark);
+  }
+  .nav--over-light.is-scrolled {
+    background: rgba(255, 255, 255, 0.85);
+    border-bottom-color: var(--c-line);
+  }
+
+  /* Burger */
+  .nav__burger {
+    display: none;
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .nav__burger span {
+    display: block;
+    width: 18px; height: 1.5px;
+    background: currentColor;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .nav--over-dark .nav__burger { color: var(--c-paper); }
+  .nav--over-light .nav__burger { color: var(--c-ink); }
+  .nav__burger[aria-expanded='true'] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav__burger[aria-expanded='true'] span:nth-child(2) { opacity: 0; }
+  .nav__burger[aria-expanded='true'] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* Mobile sheet */
+  .nav__sheet {
+    background: var(--c-ink);
+    color: var(--c-paper);
+    border-top: 1px solid var(--c-line-dark);
+    padding: 24px var(--section-x) 32px;
+  }
+  .nav__sheetLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .nav__sheetLink {
+    padding: 14px 4px;
+    font-size: 17px;
+    font-weight: 500;
+    border-bottom: 1px solid var(--c-line-dark);
+  }
+  .nav__sheetLink.btn {
+    margin-top: 12px;
+    border-bottom: none;
+    justify-content: center;
+  }
+
+  @media (max-width: 900px) {
+    .nav__inner { gap: 16px; }
+    .nav__links { display: none; }
+    .nav__cta { display: none; }
+    .nav__burger { display: inline-flex; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const nav = document.querySelector('[data-nav]');
+    const burger = document.querySelector('[data-burger]');
+    const sheet = document.querySelector('[data-sheet]');
+    const sheetLinks = document.querySelectorAll('[data-sheet-link]');
+    if (!nav) return;
+
+    const onScroll = () => {
+      if (window.scrollY > 12) nav.classList.add('is-scrolled');
+      else nav.classList.remove('is-scrolled');
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    const closeSheet = () => {
+      if (!sheet || !burger) return;
+      sheet.hidden = true;
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+
+    if (burger && sheet) {
+      burger.addEventListener('click', () => {
+        const open = burger.getAttribute('aria-expanded') === 'true';
+        if (open) {
+          closeSheet();
+        } else {
+          sheet.hidden = false;
+          burger.setAttribute('aria-expanded', 'true');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+      sheetLinks.forEach((l) => l.addEventListener('click', closeSheet));
+    }
+  })();
+</script>

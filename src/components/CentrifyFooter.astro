@@ -1,0 +1,161 @@
+---
+const year = new Date().getFullYear();
+
+const modules = [
+  { name: 'CARA',       href: '#cara' },
+  { name: 'CentriCOM',  href: '#centricom' },
+  { name: 'CentriFIN',  href: '#centrifin' },
+];
+
+const site = [
+  { name: 'How It Works', href: '#how' },
+  { name: 'Our Story',    href: '#story' },
+  { name: 'Pricing',      href: '#pricing' },
+  { name: 'Contact',      href: '#contact' },
+];
+---
+
+<footer class="foot">
+  <div class="foot__inner">
+    <div class="foot__top">
+      <div class="foot__brand">
+        <a href="/" class="foot__brandLink" aria-label="Centrify home">
+          <img src="/logo.png" alt="" class="foot__logo" />
+          <span class="foot__wordmark">Centrify</span>
+        </a>
+        <p class="foot__tag">
+          An AI-powered operating ecosystem for SMEs. Built by operators, for operators.
+        </p>
+        <p class="foot__parent">
+          A product of
+          <a href="https://prudentpartnersgroup.com" target="_blank" rel="noopener">
+            Prudent Partners Group →
+          </a>
+        </p>
+      </div>
+
+      <div class="foot__cols">
+        <div class="foot__col">
+          <div class="foot__colTitle">Ecosystem</div>
+          <ul>
+            {modules.map((m) => (
+              <li><a href={m.href}>{m.name}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div class="foot__col">
+          <div class="foot__colTitle">Site</div>
+          <ul>
+            {site.map((s) => (
+              <li><a href={s.href}>{s.name}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div class="foot__col">
+          <div class="foot__colTitle">Contact</div>
+          <ul>
+            <li><a href="mailto:hello@centrify.io">hello@centrify.io</a></li>
+            <li class="foot__mute">Ho Chi Minh City, Vietnam</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule" />
+
+    <div class="foot__bottom">
+      <span class="foot__copy mono">© {year} Centrify. All rights reserved.</span>
+      <a href="/privacy" class="foot__legal">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .foot {
+    background: var(--c-ink);
+    color: var(--c-paper);
+    padding: 88px var(--section-x) 40px;
+  }
+  .foot__inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+  }
+  .foot__top {
+    display: grid;
+    grid-template-columns: 1.4fr 2fr;
+    gap: 72px;
+    padding-bottom: 56px;
+  }
+  .foot__brandLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .foot__logo {
+    height: 28px;
+    width: 28px;
+    filter: brightness(0) invert(1);
+  }
+  .foot__tag {
+    color: var(--c-mute-dark);
+    font-size: 15px;
+    max-width: 360px;
+    margin-bottom: 22px;
+    line-height: 1.65;
+  }
+  .foot__parent {
+    font-size: 13px;
+    color: var(--c-mute-dark);
+  }
+  .foot__parent a { color: var(--c-paper); border-bottom: 1px solid var(--c-teal); padding-bottom: 2px; }
+  .foot__parent a:hover { color: var(--c-teal); }
+
+  .foot__cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .foot__colTitle {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--c-teal);
+    margin-bottom: 18px;
+  }
+  .foot__col ul { list-style: none; display: grid; gap: 10px; }
+  .foot__col a {
+    font-size: 14px;
+    color: var(--c-paper);
+    opacity: 0.82;
+    transition: opacity 0.15s ease, color 0.15s ease;
+  }
+  .foot__col a:hover { opacity: 1; color: var(--c-teal); }
+  .foot__mute { color: var(--c-mute-dark); font-size: 14px; }
+
+  .foot__bottom {
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--c-mute-dark);
+    font-size: 12px;
+  }
+  .foot__copy { letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; }
+  .foot__legal { color: var(--c-mute-dark); }
+  .foot__legal:hover { color: var(--c-paper); }
+
+  @media (max-width: 820px) {
+    .foot__top { grid-template-columns: 1fr; gap: 48px; }
+    .foot__cols { gap: 32px; }
+    .foot__bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+  }
+  @media (max-width: 520px) {
+    .foot__cols { grid-template-columns: 1fr 1fr; }
+  }
+</style>
