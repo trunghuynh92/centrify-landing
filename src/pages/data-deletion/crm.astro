@@ -1,0 +1,263 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../../components/Navigation.astro';
+---
+
+<BaseLayout
+  title="Data Deletion Instructions | Hướng Dẫn Xóa Dữ Liệu - Centrify"
+  description="How to request deletion of your personal data from Centrify Chatbot & Smart CRM, including data sourced from Facebook and Instagram."
+>
+  <Fragment slot="head">
+    <style>
+      .deletion-page { padding-top: 120px; padding-bottom: 80px; min-height: 100vh; }
+      .deletion-container { max-width: 800px; margin: 0 auto; }
+      .deletion-header { text-align: center; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+      .deletion-header h1 { font-size: 40px; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.02em; }
+      .deletion-meta { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; font-size: 14px; color: var(--text-muted); }
+      .deletion-meta span { display: flex; align-items: center; gap: 6px; }
+
+      .deletion-content { font-size: 16px; line-height: 1.8; color: var(--text-muted); }
+      .deletion-content h2 { font-size: 28px; font-weight: 700; color: var(--text); margin-top: 48px; margin-bottom: 20px; padding-top: 32px; border-top: 1px solid var(--border); }
+      .deletion-content h2:first-of-type { border-top: none; padding-top: 0; }
+      .deletion-content h3 { font-size: 20px; font-weight: 600; color: var(--text); margin-top: 32px; margin-bottom: 16px; }
+      .deletion-content p { margin-bottom: 16px; }
+      .deletion-content strong { color: var(--text); font-weight: 600; }
+      .deletion-content ul, .deletion-content ol { margin-bottom: 16px; padding-left: 24px; }
+      .deletion-content li { margin-bottom: 8px; }
+      .deletion-content a { color: var(--primary); text-decoration: underline; text-underline-offset: 2px; }
+      .deletion-content a:hover { color: var(--cyan); }
+
+      .lang-switcher { display: flex; justify-content: center; gap: 16px; margin-bottom: 32px; }
+      .lang-btn { padding: 8px 20px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border); border-radius: 8px; color: var(--text-muted); font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+      .lang-btn:hover, .lang-btn.active { background: rgba(14, 165, 233, 0.1); border-color: var(--primary); color: var(--primary); }
+
+      .contact-card { margin-top: 32px; padding: 24px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border); border-radius: 16px; }
+      .contact-card p { margin-bottom: 8px; }
+
+      .callout { margin: 24px 0; padding: 20px 24px; background: rgba(14, 165, 233, 0.08); border: 1px solid rgba(14, 165, 233, 0.3); border-radius: 12px; }
+      .callout p:last-child { margin-bottom: 0; }
+
+      .copyright { text-align: center; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); font-size: 14px; color: var(--text-muted); }
+
+      @media (max-width: 640px) {
+        .deletion-header h1 { font-size: 28px; }
+        .deletion-content h2 { font-size: 22px; }
+        .deletion-content h3 { font-size: 18px; }
+      }
+    </style>
+  </Fragment>
+
+  <Navigation slot="header" />
+
+  <section class="deletion-page">
+    <div class="container">
+      <div class="deletion-container">
+        <header class="deletion-header">
+          <h1>Data Deletion Instructions | Hướng Dẫn Xóa Dữ Liệu</h1>
+          <div class="deletion-meta">
+            <span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              Centrify Chatbot &amp; Smart CRM
+            </span>
+            <span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              Last Updated: May 31, 2026
+            </span>
+          </div>
+        </header>
+
+        <div class="lang-switcher">
+          <button class="lang-btn active" onclick="showLang('en')">English</button>
+          <button class="lang-btn" onclick="showLang('vi')">Tiếng Việt</button>
+        </div>
+
+        <div class="deletion-content" id="content-en">
+          <h2>English Version</h2>
+
+          <h3>1. Overview</h3>
+          <p>This page explains how to request deletion of personal data that Centrify Chatbot &amp; Smart CRM ("Centrify," "we," "our," or "us") holds about you. This includes data sourced from Facebook Messenger, Instagram Direct, Zalo, and any other channel through which you have contacted a business that uses our platform.</p>
+          <p>You have the right to request deletion of your personal data at any time, free of charge.</p>
+
+          <h3>2. What Data We Hold</h3>
+          <p>When you message a business that uses Centrify, we may store:</p>
+          <ul>
+            <li>Your public profile information from Facebook or Instagram (name, profile picture, platform-specific user ID)</li>
+            <li>The content of messages exchanged between you and the business</li>
+            <li>Comments you have posted on the business's public posts</li>
+            <li>Any contact information (phone number, email, address) you shared with the business</li>
+            <li>Records of appointments, orders, or other transactions handled through the conversation</li>
+            <li>Technical metadata such as timestamps and message delivery status</li>
+          </ul>
+
+          <h3>3. How to Request Deletion</h3>
+          <p>You have two options:</p>
+
+          <p><strong>Option A — Email request (recommended)</strong></p>
+          <ol>
+            <li>Send an email to <a href="mailto:contact@centrify.io?subject=Data%20Deletion%20Request">contact@centrify.io</a> with the subject line "Data Deletion Request".</li>
+            <li>Include the following so we can identify your data:
+              <ul>
+                <li>Your Facebook or Instagram username (handle), <em>or</em></li>
+                <li>The name of the business / Facebook Page you contacted, <em>or</em></li>
+                <li>The phone number or email address you shared in the conversation</li>
+              </ul>
+            </li>
+            <li>State clearly that you are requesting deletion of all your personal data held by Centrify.</li>
+          </ol>
+
+          <p><strong>Option B — Revoke app permissions on Facebook</strong></p>
+          <ol>
+            <li>Go to <a href="https://www.facebook.com/settings?tab=business_tools" target="_blank" rel="noopener">Facebook Settings → Business Integrations</a>.</li>
+            <li>Find "Centrify Chatbot" in the list of connected apps.</li>
+            <li>Click <strong>Remove</strong>. Facebook will notify us, and we will delete the data associated with your Facebook User ID within 30 days.</li>
+          </ol>
+          <div class="callout">
+            <p><strong>Note:</strong> Option B removes the link between your Facebook account and Centrify. The business you previously contacted may still hold a contact record under another identifier (phone, email). To remove those records too, use Option A or contact the business directly.</p>
+          </div>
+
+          <h3>4. Processing Time</h3>
+          <p>We will acknowledge your request within <strong>5 business days</strong> and complete deletion within <strong>30 days</strong>. We will email you a confirmation once the deletion is complete.</p>
+
+          <h3>5. What Happens to Your Data</h3>
+          <p>On deletion, we will:</p>
+          <ul>
+            <li>Permanently remove your personal data from our active database</li>
+            <li>Remove your data from operational backups within the standard backup rotation cycle (up to 35 days)</li>
+            <li>Anonymize any aggregate analytics that referenced your data</li>
+          </ul>
+
+          <h3>6. Data We Are Required to Retain</h3>
+          <p>In limited cases, we may retain certain records after a deletion request if required by Vietnamese law, including:</p>
+          <ul>
+            <li>Financial or transaction records subject to tax retention requirements</li>
+            <li>Records subject to an ongoing legal hold or investigation</li>
+          </ul>
+          <p>Retained records are isolated and used only for the legal purpose for which they are kept.</p>
+
+          <h3>7. Deletion of a Business Account</h3>
+          <p>If you are a business using Centrify and wish to close your account and delete all Customer Data your business has processed through the platform, please contact us at <a href="mailto:contact@centrify.io">contact@centrify.io</a> from the email address registered on the account.</p>
+
+          <h3>8. Contact Us</h3>
+          <p>For data deletion requests or any privacy-related questions:</p>
+          <div class="contact-card">
+            <p><strong>Centrify</strong></p>
+            <p>Email: <a href="mailto:contact@centrify.io">contact@centrify.io</a></p>
+            <p>Subject line for deletion requests: <strong>Data Deletion Request</strong></p>
+            <p>Website: <a href="https://www.centrify.io">www.centrify.io</a></p>
+          </div>
+        </div>
+
+        <div class="deletion-content" id="content-vi" style="display: none;">
+          <h2>Phiên Bản Tiếng Việt</h2>
+
+          <h3>1. Tổng Quan</h3>
+          <p>Trang này giải thích cách yêu cầu xóa dữ liệu cá nhân mà Centrify Chatbot &amp; Smart CRM ("Centrify", "chúng tôi") đang lưu giữ về bạn. Dữ liệu này bao gồm thông tin có nguồn gốc từ Facebook Messenger, Instagram Direct, Zalo và bất kỳ kênh nào khác mà bạn đã sử dụng để liên hệ với một doanh nghiệp sử dụng nền tảng của chúng tôi.</p>
+          <p>Bạn có quyền yêu cầu xóa dữ liệu cá nhân của mình bất kỳ lúc nào, miễn phí.</p>
+
+          <h3>2. Dữ Liệu Chúng Tôi Lưu Giữ</h3>
+          <p>Khi bạn nhắn tin cho một doanh nghiệp sử dụng Centrify, chúng tôi có thể lưu trữ:</p>
+          <ul>
+            <li>Thông tin hồ sơ công khai của bạn từ Facebook hoặc Instagram (tên, ảnh đại diện, ID người dùng theo nền tảng)</li>
+            <li>Nội dung tin nhắn được trao đổi giữa bạn và doanh nghiệp</li>
+            <li>Bình luận bạn đã đăng trên bài viết công khai của doanh nghiệp</li>
+            <li>Mọi thông tin liên hệ (số điện thoại, email, địa chỉ) bạn đã chia sẻ với doanh nghiệp</li>
+            <li>Hồ sơ về lịch hẹn, đơn hàng, hoặc giao dịch khác được xử lý thông qua cuộc hội thoại</li>
+            <li>Siêu dữ liệu kỹ thuật như dấu thời gian và trạng thái gửi tin nhắn</li>
+          </ul>
+
+          <h3>3. Cách Yêu Cầu Xóa Dữ Liệu</h3>
+          <p>Bạn có hai lựa chọn:</p>
+
+          <p><strong>Lựa chọn A — Gửi email yêu cầu (khuyến nghị)</strong></p>
+          <ol>
+            <li>Gửi email tới <a href="mailto:contact@centrify.io?subject=Yêu%20cầu%20xóa%20dữ%20liệu">contact@centrify.io</a> với tiêu đề "Yêu cầu xóa dữ liệu".</li>
+            <li>Bao gồm các thông tin sau để chúng tôi xác định dữ liệu của bạn:
+              <ul>
+                <li>Tên người dùng (handle) Facebook hoặc Instagram của bạn, <em>hoặc</em></li>
+                <li>Tên doanh nghiệp / Trang Facebook bạn đã liên hệ, <em>hoặc</em></li>
+                <li>Số điện thoại hoặc địa chỉ email bạn đã chia sẻ trong cuộc hội thoại</li>
+              </ul>
+            </li>
+            <li>Nêu rõ rằng bạn yêu cầu xóa toàn bộ dữ liệu cá nhân của bạn được Centrify lưu giữ.</li>
+          </ol>
+
+          <p><strong>Lựa chọn B — Thu hồi quyền ứng dụng trên Facebook</strong></p>
+          <ol>
+            <li>Vào <a href="https://www.facebook.com/settings?tab=business_tools" target="_blank" rel="noopener">Cài đặt Facebook → Công cụ Kinh doanh</a>.</li>
+            <li>Tìm "Centrify Chatbot" trong danh sách ứng dụng đã kết nối.</li>
+            <li>Nhấn <strong>Gỡ bỏ</strong>. Facebook sẽ thông báo cho chúng tôi và chúng tôi sẽ xóa dữ liệu liên quan đến ID người dùng Facebook của bạn trong vòng 30 ngày.</li>
+          </ol>
+          <div class="callout">
+            <p><strong>Lưu ý:</strong> Lựa chọn B chỉ gỡ liên kết giữa tài khoản Facebook của bạn và Centrify. Doanh nghiệp bạn đã liên hệ trước đó vẫn có thể lưu hồ sơ liên hệ dưới định danh khác (số điện thoại, email). Để xóa các hồ sơ đó, hãy dùng Lựa chọn A hoặc liên hệ trực tiếp với doanh nghiệp.</p>
+          </div>
+
+          <h3>4. Thời Gian Xử Lý</h3>
+          <p>Chúng tôi sẽ xác nhận yêu cầu của bạn trong vòng <strong>5 ngày làm việc</strong> và hoàn thành việc xóa trong vòng <strong>30 ngày</strong>. Chúng tôi sẽ gửi email xác nhận cho bạn khi việc xóa hoàn tất.</p>
+
+          <h3>5. Điều Gì Xảy Ra Với Dữ Liệu Của Bạn</h3>
+          <p>Khi xóa, chúng tôi sẽ:</p>
+          <ul>
+            <li>Xóa vĩnh viễn dữ liệu cá nhân của bạn khỏi cơ sở dữ liệu đang hoạt động của chúng tôi</li>
+            <li>Xóa dữ liệu của bạn khỏi các bản sao lưu vận hành trong chu kỳ luân phiên sao lưu tiêu chuẩn (tối đa 35 ngày)</li>
+            <li>Ẩn danh mọi phân tích tổng hợp có tham chiếu đến dữ liệu của bạn</li>
+          </ul>
+
+          <h3>6. Dữ Liệu Chúng Tôi Phải Lưu Giữ</h3>
+          <p>Trong một số trường hợp giới hạn, chúng tôi có thể lưu giữ một số hồ sơ sau khi nhận yêu cầu xóa nếu pháp luật Việt Nam yêu cầu, bao gồm:</p>
+          <ul>
+            <li>Hồ sơ tài chính hoặc giao dịch chịu yêu cầu lưu giữ theo luật thuế</li>
+            <li>Hồ sơ thuộc diện giữ lại theo lệnh pháp lý hoặc cuộc điều tra đang diễn ra</li>
+          </ul>
+          <p>Hồ sơ được giữ lại sẽ được tách biệt và chỉ sử dụng cho mục đích pháp lý mà chúng được lưu giữ.</p>
+
+          <h3>7. Xóa Tài Khoản Doanh Nghiệp</h3>
+          <p>Nếu bạn là một doanh nghiệp đang sử dụng Centrify và muốn đóng tài khoản cùng xóa toàn bộ Dữ Liệu Khách Hàng mà doanh nghiệp của bạn đã xử lý qua nền tảng, vui lòng liên hệ chúng tôi tại <a href="mailto:contact@centrify.io">contact@centrify.io</a> từ địa chỉ email đã đăng ký trên tài khoản.</p>
+
+          <h3>8. Liên Hệ</h3>
+          <p>Cho mọi yêu cầu xóa dữ liệu hoặc câu hỏi liên quan đến quyền riêng tư:</p>
+          <div class="contact-card">
+            <p><strong>Centrify</strong></p>
+            <p>Email: <a href="mailto:contact@centrify.io">contact@centrify.io</a></p>
+            <p>Tiêu đề email cho yêu cầu xóa: <strong>Yêu cầu xóa dữ liệu</strong></p>
+            <p>Website: <a href="https://www.centrify.io">www.centrify.io</a></p>
+          </div>
+        </div>
+
+        <p class="copyright">© 2026 Centrify. All rights reserved. | Bảo lưu mọi quyền.</p>
+      </div>
+    </div>
+  </section>
+
+  <Fragment slot="scripts">
+    <script is:inline>
+      function showLang(lang) {
+        const enContent = document.getElementById('content-en');
+        const viContent = document.getElementById('content-vi');
+        const buttons = document.querySelectorAll('.lang-btn');
+
+        if (lang === 'en') {
+          enContent.style.display = 'block';
+          viContent.style.display = 'none';
+        } else {
+          enContent.style.display = 'none';
+          viContent.style.display = 'block';
+        }
+
+        buttons.forEach(btn => {
+          btn.classList.remove('active');
+          if ((lang === 'en' && btn.textContent === 'English') ||
+              (lang === 'vi' && btn.textContent === 'Tiếng Việt')) {
+            btn.classList.add('active');
+          }
+        });
+      }
+    </script>
+  </Fragment>
+</BaseLayout>
