@@ -4,8 +4,8 @@ import Navigation from '../../components/Navigation.astro';
 ---
 
 <BaseLayout
-  title="Privacy Policy | Chính Sách Bảo Mật - Centrify"
-  description="Privacy Policy for Centrify Chatbot & Smart CRM. Learn how we collect, use, store, and protect your personal information."
+  title="Privacy Policy | Chính Sách Bảo Mật - Centrify Chatbot & Smart CRM"
+  description="Privacy Policy for Centrify Chatbot & Smart CRM, operated by Blue Wings International. How we collect, use, store, and protect personal information from Facebook, Instagram, Zalo and other channels."
 >
   <Fragment slot="head">
     <style>
@@ -189,7 +189,7 @@ import Navigation from '../../components/Navigation.astro';
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
               </svg>
-              Centrify Chatbot & Smart CRM
+              Centrify Chatbot &amp; Smart CRM
             </span>
             <span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -198,7 +198,7 @@ import Navigation from '../../components/Navigation.astro';
                 <line x1="8" y1="2" x2="8" y2="6"></line>
                 <line x1="3" y1="10" x2="21" y2="10"></line>
               </svg>
-              Last Updated: December 28, 2025
+              Last Updated: June 1, 2026
             </span>
           </div>
         </header>
@@ -212,114 +212,157 @@ import Navigation from '../../components/Navigation.astro';
           <h2>English Version</h2>
 
           <h3>1. Introduction</h3>
-          <p>Welcome to Centrify ("we," "our," or "us"). We provide chatbot and smart CRM solutions for businesses through our platform at chat.centrify.io. This Privacy Policy explains how we collect, use, store, and protect your personal information when you interact with our services, including through Facebook Messenger.</p>
-          <p>By using our services, you consent to the practices described in this policy.</p>
+          <p>This Privacy Policy describes how <strong>Blue Wings International Company Limited</strong> ("Blue Wings", "we", "our", or "us") collects, uses, stores, and protects personal information in connection with the <strong>Centrify Chatbot &amp; Smart CRM</strong> service (the "Service") and the marketing website at <a href="https://www.centrify.io">www.centrify.io</a>.</p>
+          <p>Blue Wings is the data controller for personal information processed through the Service. The Service helps businesses manage customer conversations across Facebook Messenger, Instagram Direct, Zalo, and web chat from a single dashboard.</p>
+          <p>By using the Service or by sending a message to a business that uses the Service, you consent to the practices described in this Policy. If you do not agree, please do not use the Service.</p>
 
           <h3>2. Information We Collect</h3>
-          <p>We collect the following types of information:</p>
-          <p><strong>2.1 Facebook Profile Information</strong></p>
+
+          <p><strong>2.1 Information from Meta Platforms (Facebook &amp; Instagram)</strong></p>
+          <p>When a business connects its Facebook Page or Instagram Business Account to the Service, we receive the following from Meta:</p>
           <ul>
-            <li>Full name</li>
-            <li>Email address</li>
-            <li>Profile picture</li>
-            <li>Facebook User ID</li>
+            <li>Page or Instagram account access tokens granted through Facebook Login (OAuth)</li>
+            <li>Public profile information of customers who message the connected page or account: name, profile picture, platform-scoped user ID</li>
+            <li>The content of messages exchanged between customers and the connected page or account (including text, attachments, stickers, reactions)</li>
+            <li>Comments posted by customers on the connected page's public posts</li>
+            <li>Conversation metadata: timestamps, delivery and read receipts, thread identifiers</li>
+            <li>Page or Instagram account metadata: page name, profile picture, IDs</li>
+            <li>Webhook event payloads delivered by Meta in real time (incoming messages, message echoes, comment notifications)</li>
           </ul>
-          <p><strong>2.2 Communication Data</strong></p>
+          <p>We only receive this information for pages and accounts whose administrators have explicitly authorized the Service via Meta's official OAuth flow.</p>
+
+          <p><strong>2.2 Information from Zalo</strong></p>
+          <p>When a business connects its Zalo Official Account, we receive analogous information: OA access tokens, follower profile information, message content, and webhook events delivered by Zalo.</p>
+
+          <p><strong>2.3 Information from web chat embeds</strong></p>
           <ul>
-            <li>Messages and conversation history</li>
-            <li>Inquiries and support requests</li>
-            <li>Appointment booking details</li>
+            <li>Name, email, or other contact information voluntarily entered into a chat widget</li>
+            <li>Message content sent through the widget</li>
+            <li>Page URL where the widget was loaded</li>
           </ul>
-          <p><strong>2.3 Contact Information</strong></p>
+
+          <p><strong>2.4 Contact information shared in conversations</strong></p>
           <ul>
-            <li>Phone numbers</li>
-            <li>Alternative email addresses</li>
-            <li>Preferred contact methods</li>
+            <li>Phone numbers, alternative email addresses, physical addresses voluntarily shared by customers during a conversation</li>
+            <li>Preferences and notes recorded by the business's staff</li>
           </ul>
-          <p><strong>2.4 Transaction Data</strong></p>
+
+          <p><strong>2.5 Transaction and appointment data</strong></p>
           <ul>
-            <li>Booking and appointment records</li>
-            <li>Service preferences</li>
-            <li>Payment information (when applicable)</li>
+            <li>Booking and appointment records created through the conversation flow</li>
+            <li>Service preferences, package selections</li>
+            <li>Payment status references (we do not store full payment card numbers)</li>
           </ul>
-          <p><strong>2.5 Technical Data</strong></p>
+
+          <p><strong>2.6 Technical data about business users</strong></p>
           <ul>
-            <li>Device information</li>
-            <li>IP address</li>
-            <li>Browser type</li>
-            <li>Usage patterns and analytics</li>
+            <li>Authenticated session data for business staff who sign in to the dashboard</li>
+            <li>Device information, IP address, browser type</li>
+            <li>Usage logs and analytics for the dashboard application</li>
           </ul>
 
           <h3>3. How We Use Your Information</h3>
-          <p>We use your information for the following purposes:</p>
-          <p><strong>3.1 Service Delivery</strong></p>
+
+          <p><strong>3.1 To deliver the Service</strong></p>
           <ul>
-            <li>Responding to your inquiries and support requests</li>
-            <li>Processing and managing appointment bookings</li>
-            <li>Providing customer support through our chatbot</li>
-          </ul>
-          <p><strong>3.2 Communication</strong></p>
-          <ul>
-            <li>Sending booking confirmations and reminders</li>
-            <li>Providing updates about our services</li>
-            <li>Marketing communications (with your consent)</li>
-          </ul>
-          <p><strong>3.3 Analytics and Improvement</strong></p>
-          <ul>
-            <li>Analyzing usage patterns to improve our services</li>
-            <li>Understanding customer preferences</li>
-            <li>Enhancing chatbot performance and accuracy</li>
+            <li>Display inbound messages and comments in the business's shared inbox so staff can respond</li>
+            <li>Send replies composed by business staff back to customers through the relevant platform's messaging API</li>
+            <li>Persist conversation history and contact records so staff can resume conversations and maintain continuity</li>
+            <li>Generate AI-assisted reply suggestions and intent classifications to help staff respond faster</li>
+            <li>Process booking, appointment, and order requests captured through conversations</li>
           </ul>
 
-          <h3>4. Data Storage and Security</h3>
-          <p><strong>4.1 Storage</strong></p>
-          <p>Your data is securely stored on Supabase, a trusted cloud database platform with enterprise-grade security measures.</p>
-          <p><strong>4.2 Security Measures</strong></p>
-          <p>We implement appropriate technical and organizational measures to protect your personal data, including:</p>
+          <p><strong>3.2 To communicate with customers</strong></p>
           <ul>
-            <li>Encryption of data in transit and at rest</li>
-            <li>Access controls and authentication</li>
-            <li>Regular security assessments</li>
-            <li>Secure backup procedures</li>
+            <li>Send appointment confirmations and reminders</li>
+            <li>Provide customer support and follow-up</li>
+            <li>Marketing communications only with the customer's explicit consent and in compliance with the originating platform's rules</li>
           </ul>
-          <p><strong>4.3 Data Retention</strong></p>
-          <p>We retain your personal data only for as long as necessary to fulfill the purposes outlined in this policy, or as required by law.</p>
+
+          <p><strong>3.3 To improve the Service</strong></p>
+          <ul>
+            <li>Analyze aggregated usage patterns to improve features</li>
+            <li>Train and evaluate AI models on anonymized or aggregated data (we do not use the content of customer conversations to train third-party foundation models)</li>
+            <li>Detect abuse, fraud, and policy violations</li>
+          </ul>
+
+          <h3>4. Data Storage, Security, and Sub-Processors</h3>
+
+          <p><strong>4.1 Storage</strong></p>
+          <p>Your data is stored in a managed PostgreSQL database operated by Supabase, hosted in Supabase's cloud infrastructure. We use industry-standard encryption in transit (TLS) and at rest.</p>
+
+          <p><strong>4.2 Sub-processors</strong></p>
+          <p>We engage the following service providers to process personal data on our behalf, each under contractual data-protection commitments:</p>
+          <ul>
+            <li><strong>Supabase Inc.</strong> — managed PostgreSQL database, authentication, and realtime infrastructure</li>
+            <li><strong>Anthropic, PBC</strong> — AI processing of message content for reply suggestions and intent classification (data is not used to train Anthropic's foundation models)</li>
+            <li><strong>Vercel Inc.</strong> — hosting of the dashboard and marketing web applications</li>
+            <li><strong>Railway Corp.</strong> — hosting of the API gateway and webhook receivers</li>
+            <li><strong>Meta Platforms, Inc.</strong> — the source of Facebook and Instagram data we process</li>
+            <li><strong>VNG Corporation</strong> — the source of Zalo data we process</li>
+          </ul>
+
+          <p><strong>4.3 Security measures</strong></p>
+          <ul>
+            <li>Encryption of data in transit (TLS) and at rest</li>
+            <li>Row-Level Security (RLS) enforced in PostgreSQL so each business can only access its own data</li>
+            <li>Single sign-on via Supabase Authentication with per-account passwords</li>
+            <li>Access controls limited to authorized staff of the data controller and the relevant business</li>
+            <li>Regular security reviews and infrastructure updates</li>
+          </ul>
+
+          <p><strong>4.4 Data retention</strong></p>
+          <ul>
+            <li><strong>Active conversations</strong>: retained while the connected page or account remains active in the Service</li>
+            <li><strong>Closed conversations</strong>: retained for up to 24 months after the last message, then archived or deleted</li>
+            <li><strong>Account deletion</strong>: when a business disconnects its page/account or closes its account, personal data is removed from active systems within 30 days and from operational backups within an additional 35 days</li>
+            <li><strong>Backups</strong>: standard backup rotation up to 35 days</li>
+            <li><strong>Records subject to Vietnamese tax or legal retention</strong>: kept for the period required by law</li>
+          </ul>
 
           <h3>5. Data Sharing</h3>
-          <p><strong>We do not sell, rent, or share your personal information with third parties for their marketing purposes.</strong></p>
-          <p>We may only disclose your information in the following circumstances:</p>
+          <p><strong>We do not sell, rent, or trade personal information.</strong> We do not share personal information with third parties for their independent marketing purposes.</p>
+          <p>We disclose personal information only:</p>
           <ul>
-            <li>To comply with legal obligations</li>
-            <li>To protect our rights and safety</li>
-            <li>With service providers who assist in operating our platform (under strict confidentiality agreements)</li>
+            <li>To the sub-processors listed in Section 4.2, strictly to provide the Service</li>
+            <li>To comply with applicable Vietnamese law, court orders, or regulatory requirements</li>
+            <li>To protect the rights, property, or safety of Blue Wings, our customers, or others</li>
+            <li>In connection with a corporate transaction (merger, acquisition, asset sale) with reasonable advance notice</li>
           </ul>
 
           <h3>6. Your Rights</h3>
-          <p>You have the following rights regarding your personal data:</p>
+          <p>You have the right to:</p>
           <ul>
-            <li><strong>Access</strong>: Request a copy of your personal data</li>
-            <li><strong>Correction</strong>: Request correction of inaccurate data</li>
-            <li><strong>Deletion</strong>: Request deletion of your personal data</li>
-            <li><strong>Opt-out</strong>: Unsubscribe from marketing communications</li>
-            <li><strong>Data Portability</strong>: Request transfer of your data</li>
+            <li><strong>Access</strong> — request a copy of the personal data we hold about you</li>
+            <li><strong>Correct</strong> — request correction of inaccurate or incomplete data</li>
+            <li><strong>Delete</strong> — request deletion of your personal data (see <a href="/data-deletion/crm">Data Deletion Instructions</a>)</li>
+            <li><strong>Object or restrict</strong> — object to or restrict certain processing</li>
+            <li><strong>Withdraw consent</strong> — withdraw consent at any time where processing is based on consent</li>
+            <li><strong>Data portability</strong> — receive your personal data in a structured, machine-readable format</li>
+            <li><strong>Opt out of marketing</strong> — unsubscribe from marketing communications at any time</li>
           </ul>
-          <p>To exercise these rights, contact us at: <a href="mailto:contact@centrify.io">contact@centrify.io</a></p>
+          <p>To exercise these rights, contact us at <a href="mailto:contact@centrify.io">contact@centrify.io</a>. We will respond within 30 days.</p>
 
           <h3>7. Cookies and Tracking</h3>
-          <p>Our website may use cookies and similar technologies to enhance your experience and collect analytics data. You can manage cookie preferences through your browser settings.</p>
+          <p>Our website and dashboard use cookies and similar technologies for session management, security, and basic analytics. You can manage cookie preferences through your browser settings. We do not use cross-site advertising cookies.</p>
 
           <h3>8. Children's Privacy</h3>
-          <p>Our services are not intended for children under 16 years of age. We do not knowingly collect personal information from children.</p>
+          <p>The Service is not intended for individuals under 16 years of age. We do not knowingly collect personal information from children. If you believe we have collected information from a child, please contact us so we can delete it.</p>
 
-          <h3>9. Changes to This Policy</h3>
-          <p>We may update this Privacy Policy from time to time. We will notify you of significant changes by posting the new policy on our website with an updated revision date.</p>
+          <h3>9. International Data Transfers</h3>
+          <p>Personal data may be stored or processed on servers located outside Vietnam (including, for example, server regions operated by Supabase, Vercel, Anthropic, and Meta). Where personal data is transferred internationally, we rely on appropriate safeguards (such as standard contractual clauses) and the recipient's published data-protection commitments.</p>
 
-          <h3>10. Contact Us</h3>
+          <h3>10. Changes to This Policy</h3>
+          <p>We may update this Privacy Policy from time to time. Material changes will be announced through the Service or by email at least 30 days before they take effect. The "Last Updated" date at the top of this Policy reflects the most recent revision.</p>
+
+          <h3>11. Contact Us</h3>
           <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
           <div class="contact-card">
-            <p><strong>Centrify</strong></p>
+            <p><strong>Blue Wings International Company Limited</strong></p>
+            <p>Operator of Centrify Chatbot &amp; Smart CRM</p>
             <p>Email: <a href="mailto:contact@centrify.io">contact@centrify.io</a></p>
-            <p>Website: <a href="https://chat.centrify.io">chat.centrify.io</a></p>
+            <p>Website: <a href="https://www.centrify.io">www.centrify.io</a></p>
+            <p>Data deletion: <a href="/data-deletion/crm">www.centrify.io/data-deletion/crm</a></p>
           </div>
         </div>
 
@@ -327,118 +370,161 @@ import Navigation from '../../components/Navigation.astro';
           <h2>Phiên Bản Tiếng Việt</h2>
 
           <h3>1. Giới Thiệu</h3>
-          <p>Chào mừng bạn đến với Centrify ("chúng tôi"). Chúng tôi cung cấp giải pháp chatbot và CRM thông minh cho doanh nghiệp thông qua nền tảng chat.centrify.io. Chính Sách Bảo Mật này giải thích cách chúng tôi thu thập, sử dụng, lưu trữ và bảo vệ thông tin cá nhân của bạn khi bạn tương tác với dịch vụ của chúng tôi, bao gồm cả qua Facebook Messenger.</p>
-          <p>Bằng việc sử dụng dịch vụ của chúng tôi, bạn đồng ý với các thông lệ được mô tả trong chính sách này.</p>
+          <p>Chính Sách Bảo Mật này mô tả cách <strong>Công ty TNHH Blue Wings International</strong> ("Blue Wings", "chúng tôi") thu thập, sử dụng, lưu trữ và bảo vệ thông tin cá nhân liên quan đến dịch vụ <strong>Centrify Chatbot &amp; Smart CRM</strong> ("Dịch Vụ") và trang web tiếp thị tại <a href="https://www.centrify.io">www.centrify.io</a>.</p>
+          <p>Blue Wings là đơn vị kiểm soát dữ liệu đối với thông tin cá nhân được xử lý thông qua Dịch Vụ. Dịch Vụ giúp doanh nghiệp quản lý các cuộc hội thoại với khách hàng trên Facebook Messenger, Instagram Direct, Zalo và web chat từ một bảng điều khiển duy nhất.</p>
+          <p>Khi sử dụng Dịch Vụ hoặc gửi tin nhắn cho một doanh nghiệp đang sử dụng Dịch Vụ, bạn đồng ý với các thông lệ được mô tả trong Chính Sách này. Nếu bạn không đồng ý, vui lòng không sử dụng Dịch Vụ.</p>
 
           <h3>2. Thông Tin Chúng Tôi Thu Thập</h3>
-          <p>Chúng tôi thu thập các loại thông tin sau:</p>
-          <p><strong>2.1 Thông Tin Hồ Sơ Facebook</strong></p>
+
+          <p><strong>2.1 Thông tin từ các nền tảng Meta (Facebook &amp; Instagram)</strong></p>
+          <p>Khi một doanh nghiệp kết nối Trang Facebook hoặc Tài khoản Instagram Doanh Nghiệp với Dịch Vụ, chúng tôi nhận được từ Meta:</p>
           <ul>
-            <li>Họ và tên</li>
-            <li>Địa chỉ email</li>
-            <li>Ảnh đại diện</li>
-            <li>Facebook User ID</li>
+            <li>Mã truy cập (access token) của Trang hoặc tài khoản Instagram được cấp qua Facebook Login (OAuth)</li>
+            <li>Thông tin hồ sơ công khai của khách hàng nhắn tin cho trang/tài khoản đã kết nối: tên, ảnh đại diện, mã định danh người dùng theo nền tảng</li>
+            <li>Nội dung tin nhắn được trao đổi giữa khách hàng và trang/tài khoản đã kết nối (bao gồm văn bản, tệp đính kèm, sticker, reaction)</li>
+            <li>Bình luận do khách hàng đăng trên bài viết công khai của trang đã kết nối</li>
+            <li>Siêu dữ liệu cuộc hội thoại: dấu thời gian, trạng thái gửi và đã đọc, mã định danh chuỗi tin nhắn</li>
+            <li>Siêu dữ liệu của Trang hoặc Tài khoản Instagram: tên trang, ảnh đại diện, ID</li>
+            <li>Dữ liệu sự kiện webhook do Meta gửi theo thời gian thực (tin nhắn đến, tin nhắn lặp lại, thông báo bình luận)</li>
           </ul>
-          <p><strong>2.2 Dữ Liệu Giao Tiếp</strong></p>
+          <p>Chúng tôi chỉ nhận thông tin này đối với các trang và tài khoản mà quản trị viên đã ủy quyền rõ ràng cho Dịch Vụ thông qua luồng OAuth chính thức của Meta.</p>
+
+          <p><strong>2.2 Thông tin từ Zalo</strong></p>
+          <p>Khi một doanh nghiệp kết nối Tài Khoản Chính Thức (OA) Zalo, chúng tôi nhận được thông tin tương tự: mã truy cập OA, thông tin hồ sơ người theo dõi, nội dung tin nhắn, và các sự kiện webhook do Zalo gửi.</p>
+
+          <p><strong>2.3 Thông tin từ tiện ích web chat nhúng</strong></p>
           <ul>
-            <li>Tin nhắn và lịch sử trò chuyện</li>
-            <li>Yêu cầu hỗ trợ và thắc mắc</li>
-            <li>Chi tiết đặt lịch hẹn</li>
+            <li>Tên, email hoặc thông tin liên hệ khác do người dùng tự nhập vào tiện ích chat</li>
+            <li>Nội dung tin nhắn gửi qua tiện ích</li>
+            <li>URL trang nơi tiện ích được tải</li>
           </ul>
-          <p><strong>2.3 Thông Tin Liên Hệ</strong></p>
+
+          <p><strong>2.4 Thông tin liên hệ chia sẻ trong cuộc hội thoại</strong></p>
           <ul>
-            <li>Số điện thoại</li>
-            <li>Địa chỉ email thay thế</li>
-            <li>Phương thức liên hệ ưa thích</li>
+            <li>Số điện thoại, địa chỉ email thay thế, địa chỉ vật lý do khách hàng tự chia sẻ trong cuộc hội thoại</li>
+            <li>Sở thích và ghi chú do nhân viên của doanh nghiệp ghi nhận</li>
           </ul>
-          <p><strong>2.4 Dữ Liệu Giao Dịch</strong></p>
+
+          <p><strong>2.5 Dữ liệu giao dịch và lịch hẹn</strong></p>
           <ul>
-            <li>Hồ sơ đặt lịch và cuộc hẹn</li>
-            <li>Sở thích dịch vụ</li>
-            <li>Thông tin thanh toán (khi áp dụng)</li>
+            <li>Hồ sơ đặt lịch và cuộc hẹn được tạo thông qua luồng hội thoại</li>
+            <li>Sở thích dịch vụ, lựa chọn gói</li>
+            <li>Tham chiếu trạng thái thanh toán (chúng tôi không lưu trữ số thẻ thanh toán đầy đủ)</li>
           </ul>
-          <p><strong>2.5 Dữ Liệu Kỹ Thuật</strong></p>
+
+          <p><strong>2.6 Dữ liệu kỹ thuật về người dùng doanh nghiệp</strong></p>
           <ul>
-            <li>Thông tin thiết bị</li>
-            <li>Địa chỉ IP</li>
-            <li>Loại trình duyệt</li>
-            <li>Mô hình sử dụng và phân tích</li>
+            <li>Dữ liệu phiên đăng nhập của nhân viên doanh nghiệp truy cập bảng điều khiển</li>
+            <li>Thông tin thiết bị, địa chỉ IP, loại trình duyệt</li>
+            <li>Nhật ký sử dụng và phân tích cho ứng dụng bảng điều khiển</li>
           </ul>
 
           <h3>3. Cách Chúng Tôi Sử Dụng Thông Tin</h3>
-          <p>Chúng tôi sử dụng thông tin của bạn cho các mục đích sau:</p>
-          <p><strong>3.1 Cung Cấp Dịch Vụ</strong></p>
+
+          <p><strong>3.1 Để cung cấp Dịch Vụ</strong></p>
           <ul>
-            <li>Phản hồi thắc mắc và yêu cầu hỗ trợ của bạn</li>
-            <li>Xử lý và quản lý đặt lịch hẹn</li>
-            <li>Cung cấp hỗ trợ khách hàng thông qua chatbot</li>
-          </ul>
-          <p><strong>3.2 Giao Tiếp</strong></p>
-          <ul>
-            <li>Gửi xác nhận và nhắc nhở đặt lịch</li>
-            <li>Cung cấp cập nhật về dịch vụ của chúng tôi</li>
-            <li>Truyền thông tiếp thị (với sự đồng ý của bạn)</li>
-          </ul>
-          <p><strong>3.3 Phân Tích và Cải Tiến</strong></p>
-          <ul>
-            <li>Phân tích mô hình sử dụng để cải thiện dịch vụ</li>
-            <li>Hiểu sở thích của khách hàng</li>
-            <li>Nâng cao hiệu suất và độ chính xác của chatbot</li>
+            <li>Hiển thị tin nhắn đến và bình luận trong hộp thư chung của doanh nghiệp để nhân viên phản hồi</li>
+            <li>Gửi phản hồi do nhân viên doanh nghiệp soạn lại tới khách hàng qua API tin nhắn của nền tảng tương ứng</li>
+            <li>Lưu giữ lịch sử hội thoại và hồ sơ liên hệ để nhân viên có thể tiếp tục cuộc trò chuyện và duy trì tính liên tục</li>
+            <li>Tạo gợi ý phản hồi hỗ trợ bởi AI và phân loại ý định để nhân viên phản hồi nhanh hơn</li>
+            <li>Xử lý các yêu cầu đặt lịch, cuộc hẹn và đơn hàng được ghi nhận qua hội thoại</li>
           </ul>
 
-          <h3>4. Lưu Trữ và Bảo Mật Dữ Liệu</h3>
-          <p><strong>4.1 Lưu Trữ</strong></p>
-          <p>Dữ liệu của bạn được lưu trữ an toàn trên Supabase, một nền tảng cơ sở dữ liệu đám mây đáng tin cậy với các biện pháp bảo mật cấp doanh nghiệp.</p>
-          <p><strong>4.2 Biện Pháp Bảo Mật</strong></p>
-          <p>Chúng tôi triển khai các biện pháp kỹ thuật và tổ chức phù hợp để bảo vệ dữ liệu cá nhân của bạn, bao gồm:</p>
+          <p><strong>3.2 Để liên lạc với khách hàng</strong></p>
           <ul>
-            <li>Mã hóa dữ liệu khi truyền tải và lưu trữ</li>
-            <li>Kiểm soát truy cập và xác thực</li>
-            <li>Đánh giá bảo mật định kỳ</li>
-            <li>Quy trình sao lưu an toàn</li>
+            <li>Gửi xác nhận và nhắc nhở cuộc hẹn</li>
+            <li>Cung cấp hỗ trợ khách hàng và theo dõi</li>
+            <li>Truyền thông tiếp thị chỉ với sự đồng ý rõ ràng của khách hàng và tuân thủ quy định của nền tảng nguồn</li>
           </ul>
-          <p><strong>4.3 Thời Gian Lưu Giữ</strong></p>
-          <p>Chúng tôi chỉ lưu giữ dữ liệu cá nhân của bạn trong thời gian cần thiết để thực hiện các mục đích được nêu trong chính sách này, hoặc theo yêu cầu của pháp luật.</p>
+
+          <p><strong>3.3 Để cải thiện Dịch Vụ</strong></p>
+          <ul>
+            <li>Phân tích mô hình sử dụng tổng hợp để cải thiện tính năng</li>
+            <li>Huấn luyện và đánh giá mô hình AI trên dữ liệu ẩn danh hoặc tổng hợp (chúng tôi không sử dụng nội dung hội thoại khách hàng để huấn luyện các mô hình nền tảng của bên thứ ba)</li>
+            <li>Phát hiện hành vi lạm dụng, gian lận và vi phạm chính sách</li>
+          </ul>
+
+          <h3>4. Lưu Trữ, Bảo Mật và Các Đơn Vị Xử Lý Phụ</h3>
+
+          <p><strong>4.1 Lưu trữ</strong></p>
+          <p>Dữ liệu của bạn được lưu trữ trong cơ sở dữ liệu PostgreSQL được quản lý bởi Supabase, lưu trữ trên hạ tầng đám mây của Supabase. Chúng tôi sử dụng mã hóa tiêu chuẩn ngành cho dữ liệu khi truyền tải (TLS) và khi lưu trữ.</p>
+
+          <p><strong>4.2 Đơn vị xử lý phụ</strong></p>
+          <p>Chúng tôi sử dụng các nhà cung cấp dịch vụ sau để xử lý dữ liệu cá nhân thay mặt cho chúng tôi, mỗi đơn vị đều có cam kết bảo vệ dữ liệu theo hợp đồng:</p>
+          <ul>
+            <li><strong>Supabase Inc.</strong> — cơ sở dữ liệu PostgreSQL được quản lý, xác thực và hạ tầng thời gian thực</li>
+            <li><strong>Anthropic, PBC</strong> — xử lý AI nội dung tin nhắn cho gợi ý phản hồi và phân loại ý định (dữ liệu không được dùng để huấn luyện mô hình nền tảng của Anthropic)</li>
+            <li><strong>Vercel Inc.</strong> — lưu trữ ứng dụng bảng điều khiển và trang web tiếp thị</li>
+            <li><strong>Railway Corp.</strong> — lưu trữ cổng API và bộ nhận webhook</li>
+            <li><strong>Meta Platforms, Inc.</strong> — nguồn dữ liệu Facebook và Instagram mà chúng tôi xử lý</li>
+            <li><strong>VNG Corporation</strong> — nguồn dữ liệu Zalo mà chúng tôi xử lý</li>
+          </ul>
+
+          <p><strong>4.3 Biện pháp bảo mật</strong></p>
+          <ul>
+            <li>Mã hóa dữ liệu khi truyền tải (TLS) và khi lưu trữ</li>
+            <li>Bảo Mật Cấp Hàng (Row-Level Security) được thực thi trong PostgreSQL để mỗi doanh nghiệp chỉ có thể truy cập dữ liệu của chính mình</li>
+            <li>Đăng nhập một lần qua Supabase Authentication với mật khẩu cho từng tài khoản</li>
+            <li>Kiểm soát truy cập giới hạn cho nhân viên được ủy quyền của đơn vị kiểm soát dữ liệu và doanh nghiệp tương ứng</li>
+            <li>Đánh giá bảo mật và cập nhật hạ tầng định kỳ</li>
+          </ul>
+
+          <p><strong>4.4 Thời gian lưu giữ dữ liệu</strong></p>
+          <ul>
+            <li><strong>Hội thoại đang hoạt động</strong>: lưu giữ trong khi trang/tài khoản đã kết nối còn hoạt động trong Dịch Vụ</li>
+            <li><strong>Hội thoại đã đóng</strong>: lưu giữ tối đa 24 tháng sau tin nhắn cuối, sau đó lưu trữ hoặc xóa</li>
+            <li><strong>Xóa tài khoản</strong>: khi doanh nghiệp ngắt kết nối trang/tài khoản hoặc đóng tài khoản, dữ liệu cá nhân được xóa khỏi hệ thống hoạt động trong vòng 30 ngày và khỏi sao lưu vận hành trong vòng thêm 35 ngày</li>
+            <li><strong>Sao lưu</strong>: chu kỳ luân phiên sao lưu tiêu chuẩn tối đa 35 ngày</li>
+            <li><strong>Hồ sơ thuộc yêu cầu lưu giữ theo luật thuế hoặc pháp luật Việt Nam</strong>: lưu giữ trong thời hạn pháp luật yêu cầu</li>
+          </ul>
 
           <h3>5. Chia Sẻ Dữ Liệu</h3>
-          <p><strong>Chúng tôi không bán, cho thuê hoặc chia sẻ thông tin cá nhân của bạn với bên thứ ba cho mục đích tiếp thị của họ.</strong></p>
-          <p>Chúng tôi chỉ có thể tiết lộ thông tin của bạn trong các trường hợp sau:</p>
+          <p><strong>Chúng tôi không bán, cho thuê hoặc trao đổi thông tin cá nhân.</strong> Chúng tôi không chia sẻ thông tin cá nhân với bên thứ ba cho mục đích tiếp thị độc lập của họ.</p>
+          <p>Chúng tôi chỉ tiết lộ thông tin cá nhân trong các trường hợp:</p>
           <ul>
-            <li>Để tuân thủ nghĩa vụ pháp lý</li>
-            <li>Để bảo vệ quyền và sự an toàn của chúng tôi</li>
-            <li>Với các nhà cung cấp dịch vụ hỗ trợ vận hành nền tảng (theo thỏa thuận bảo mật nghiêm ngặt)</li>
+            <li>Tới các đơn vị xử lý phụ được nêu trong Mục 4.2, chỉ để cung cấp Dịch Vụ</li>
+            <li>Để tuân thủ pháp luật Việt Nam, lệnh của tòa án hoặc yêu cầu của cơ quan quản lý</li>
+            <li>Để bảo vệ quyền, tài sản hoặc sự an toàn của Blue Wings, khách hàng của chúng tôi hoặc bên khác</li>
+            <li>Liên quan đến giao dịch doanh nghiệp (sáp nhập, mua lại, bán tài sản) với thông báo trước hợp lý</li>
           </ul>
 
           <h3>6. Quyền Của Bạn</h3>
-          <p>Bạn có các quyền sau đối với dữ liệu cá nhân của mình:</p>
+          <p>Bạn có quyền:</p>
           <ul>
-            <li><strong>Truy cập</strong>: Yêu cầu bản sao dữ liệu cá nhân của bạn</li>
-            <li><strong>Chỉnh sửa</strong>: Yêu cầu sửa đổi dữ liệu không chính xác</li>
-            <li><strong>Xóa</strong>: Yêu cầu xóa dữ liệu cá nhân của bạn</li>
-            <li><strong>Từ chối</strong>: Hủy đăng ký nhận thông tin tiếp thị</li>
-            <li><strong>Di chuyển dữ liệu</strong>: Yêu cầu chuyển dữ liệu của bạn</li>
+            <li><strong>Truy cập</strong> — yêu cầu bản sao dữ liệu cá nhân chúng tôi đang lưu giữ về bạn</li>
+            <li><strong>Sửa đổi</strong> — yêu cầu sửa đổi dữ liệu không chính xác hoặc chưa đầy đủ</li>
+            <li><strong>Xóa</strong> — yêu cầu xóa dữ liệu cá nhân của bạn (xem <a href="/data-deletion/crm">Hướng Dẫn Xóa Dữ Liệu</a>)</li>
+            <li><strong>Phản đối hoặc hạn chế</strong> — phản đối hoặc hạn chế một số hoạt động xử lý</li>
+            <li><strong>Rút lại sự đồng ý</strong> — rút lại sự đồng ý bất kỳ lúc nào khi việc xử lý dựa trên sự đồng ý</li>
+            <li><strong>Di chuyển dữ liệu</strong> — nhận dữ liệu cá nhân của bạn ở định dạng có cấu trúc, máy đọc được</li>
+            <li><strong>Từ chối tiếp thị</strong> — hủy đăng ký nhận thông tin tiếp thị bất kỳ lúc nào</li>
           </ul>
-          <p>Để thực hiện các quyền này, vui lòng liên hệ: <a href="mailto:contact@centrify.io">contact@centrify.io</a></p>
+          <p>Để thực hiện các quyền này, liên hệ <a href="mailto:contact@centrify.io">contact@centrify.io</a>. Chúng tôi sẽ phản hồi trong vòng 30 ngày.</p>
 
           <h3>7. Cookie và Theo Dõi</h3>
-          <p>Trang web của chúng tôi có thể sử dụng cookie và các công nghệ tương tự để nâng cao trải nghiệm của bạn và thu thập dữ liệu phân tích. Bạn có thể quản lý tùy chọn cookie thông qua cài đặt trình duyệt.</p>
+          <p>Trang web và bảng điều khiển của chúng tôi sử dụng cookie và các công nghệ tương tự cho quản lý phiên, bảo mật và phân tích cơ bản. Bạn có thể quản lý tùy chọn cookie qua cài đặt trình duyệt. Chúng tôi không sử dụng cookie quảng cáo liên trang web.</p>
 
           <h3>8. Quyền Riêng Tư Của Trẻ Em</h3>
-          <p>Dịch vụ của chúng tôi không dành cho trẻ em dưới 16 tuổi. Chúng tôi không cố ý thu thập thông tin cá nhân từ trẻ em.</p>
+          <p>Dịch Vụ không dành cho cá nhân dưới 16 tuổi. Chúng tôi không cố ý thu thập thông tin cá nhân từ trẻ em. Nếu bạn cho rằng chúng tôi đã thu thập thông tin từ trẻ em, vui lòng liên hệ chúng tôi để xóa.</p>
 
-          <h3>9. Thay Đổi Chính Sách</h3>
-          <p>Chúng tôi có thể cập nhật Chính Sách Bảo Mật này theo thời gian. Chúng tôi sẽ thông báo cho bạn về những thay đổi quan trọng bằng cách đăng chính sách mới trên trang web với ngày cập nhật mới.</p>
+          <h3>9. Chuyển Dữ Liệu Quốc Tế</h3>
+          <p>Dữ liệu cá nhân có thể được lưu trữ hoặc xử lý trên các máy chủ nằm ngoài Việt Nam (ví dụ: các khu vực máy chủ do Supabase, Vercel, Anthropic và Meta vận hành). Khi dữ liệu cá nhân được chuyển ra nước ngoài, chúng tôi dựa vào các biện pháp bảo vệ phù hợp (như điều khoản hợp đồng tiêu chuẩn) và các cam kết bảo vệ dữ liệu được công bố của bên nhận.</p>
 
-          <h3>10. Liên Hệ</h3>
-          <p>Nếu bạn có câu hỏi về Chính Sách Bảo Mật này hoặc các thông lệ dữ liệu của chúng tôi, vui lòng liên hệ:</p>
+          <h3>10. Thay Đổi Chính Sách</h3>
+          <p>Chúng tôi có thể cập nhật Chính Sách Bảo Mật này theo thời gian. Các thay đổi quan trọng sẽ được thông báo qua Dịch Vụ hoặc email ít nhất 30 ngày trước khi có hiệu lực. Ngày "Cập nhật lần cuối" ở đầu Chính Sách phản ánh lần sửa đổi gần nhất.</p>
+
+          <h3>11. Liên Hệ</h3>
+          <p>Nếu có câu hỏi về Chính Sách Bảo Mật này hoặc các thông lệ dữ liệu của chúng tôi, vui lòng liên hệ:</p>
           <div class="contact-card">
-            <p><strong>Centrify</strong></p>
+            <p><strong>Công ty TNHH Blue Wings International</strong></p>
+            <p>Đơn vị vận hành Centrify Chatbot &amp; Smart CRM</p>
             <p>Email: <a href="mailto:contact@centrify.io">contact@centrify.io</a></p>
-            <p>Website: <a href="https://chat.centrify.io">chat.centrify.io</a></p>
+            <p>Website: <a href="https://www.centrify.io">www.centrify.io</a></p>
+            <p>Xóa dữ liệu: <a href="/data-deletion/crm">www.centrify.io/data-deletion/crm</a></p>
           </div>
         </div>
 
-        <p class="copyright">© 2025 Centrify. All rights reserved. | Bảo lưu mọi quyền.</p>
+        <p class="copyright">© 2026 Blue Wings International Company Limited. All rights reserved. | Bảo lưu mọi quyền.</p>
       </div>
     </div>
   </section>
